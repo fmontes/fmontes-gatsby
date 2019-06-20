@@ -4863,6 +4863,13 @@ gatsby-remark-images@^3.0.14:
     unist-util-select "^1.5.0"
     unist-util-visit-parents "^2.0.1"
 
+gatsby-remark-lazy-load@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-lazy-load/-/gatsby-remark-lazy-load-1.0.1.tgz#c771c708eb76fa50ea9ba95ede7531f837d80648"
+  integrity sha512-W4T4kKRXZWbySWT3koO1JNW7sULWr36Rm5uxSDI2LxZ4ogs7RJ1eGEgRlPFVQjuyqZqRLTZSfj9a2A+y7fLI6Q==
+  dependencies:
+    unist-util-visit-parents "^2.0.1"
+
 gatsby-remark-prismjs@^3.2.11:
   version "3.2.11"
   resolved "https://registry.yarnpkg.com/gatsby-remark-prismjs/-/gatsby-remark-prismjs-3.2.11.tgz#94407a1d78233b7be0261b8608bdae2a01c98ce6"
@@ -6899,6 +6906,11 @@ latest-version@^3.0.0:
   integrity sha1-ogU4P+oyKzO1rjsYq+4NwvNW7hU=
   dependencies:
     package-json "^4.0.0"
+
+lazysizes@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/lazysizes/-/lazysizes-5.1.0.tgz#a87d413aa3765dee03fcb2159f423ab84ed2f2e6"
+  integrity sha512-5NsKePWiWTTCXf3xKFaLOXE6eEX0Y1iWpxYAHnPRiv4JrDpUmgRnuDxeDeskw4hue9SgViXbAtEEvP9Jd8yZfQ==
 
 lcid@^1.0.0:
   version "1.0.0"
