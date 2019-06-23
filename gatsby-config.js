@@ -1,6 +1,6 @@
 module.exports = {
     siteMetadata: {
-        title: `Freddy Montes Web Developer`,
+        title: `Designer UI/UX Frontend Developer`,
         author: `Freddy Montes`,
         description: `A starter blog demonstrating what Gatsby can do.`,
         siteUrl: `https://fmontes/`,
@@ -12,7 +12,7 @@ module.exports = {
         {
             resolve: `gatsby-source-filesystem`,
             options: {
-                path: `${__dirname}/content/blog`,
+                path: `${__dirname}/content`,
                 name: `blog`,
             },
         },
