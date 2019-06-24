@@ -5,6 +5,11 @@ import Bio from '../../components/bio'
 import Layout from '../../components/layout'
 import SEO from '../../components/seo'
 import { rhythm } from '../../utils/typography'
+import styled from 'styled-components'
+
+const BlogTitle = styled.h3`
+    margin-bottom: ${rhythm(1 / 4)};
+`
 
 class BlogIndex extends React.Component {
     render() {
@@ -19,15 +24,11 @@ class BlogIndex extends React.Component {
                     const title = node.frontmatter.title || node.fields.slug
                     return (
                         <div key={node.fields.slug}>
-                            <h3
-                                style={{
-                                    marginBottom: rhythm(1 / 4),
-                                }}
-                            >
-                                <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
+                            <BlogTitle>
+                                <Link to={node.fields.slug}>
                                     {title}
                                 </Link>
-                            </h3>
+                            </BlogTitle>
                             <small>{node.frontmatter.date}</small>
                             <p
                                 dangerouslySetInnerHTML={{

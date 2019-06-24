@@ -8,8 +8,20 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 import Image from 'gatsby-image'
-
+import styled from 'styled-components'
 import { rhythm } from '../utils/typography'
+
+const BioWrapper = styled.div`
+    display: flex;
+    margin-bottom: rhythm(2.5);
+`
+
+const ImageStyled = styled(Image)`
+    margin-right: ${rhythm(1 / 2)};
+    margin-bottom: 0;
+    min-width: 50px;
+    border-radius: 100%;
+`
 
 function Bio() {
     return (
@@ -18,33 +30,23 @@ function Bio() {
             render={(data) => {
                 const { author, social } = data.site.siteMetadata
                 return (
-                    <div
-                        style={{
-                            display: `flex`,
-                            marginBottom: rhythm(2.5),
-                        }}
-                    >
-                        <Image
+                    <BioWrapper>
+                        <ImageStyled
                             fixed={data.avatar.childImageSharp.fixed}
                             alt={author}
-                            style={{
-                                marginRight: rhythm(1 / 2),
-                                marginBottom: 0,
-                                minWidth: 50,
-                                borderRadius: `100%`,
-                            }}
                             imgStyle={{
                                 borderRadius: `50%`,
                             }}
                         />
                         <p>
-                            Written by <strong>{author}</strong> who lives and works in Costa Rica building useful things.
+                            Written by <strong>{author}</strong> who lives and works in Costa Rica
+                            building useful things.
                             {` `}
                             <a href={`https://twitter.com/${social.twitter}`}>
                                 You should follow him on Twitter
                             </a>
                         </p>
-                    </div>
+                    </BioWrapper>
                 )
             }}
         />

@@ -1,6 +1,12 @@
 import React from 'react'
 import { Link } from 'gatsby'
+import styled from 'styled-components'
+
 import { rhythm } from '../utils/typography'
+
+const LinkStyled = styled(Link)`
+    margin-right: ${rhythm(0.5)};
+`
 
 const navItems = [
     {
@@ -22,9 +28,9 @@ class Menu extends React.Component {
         return (
             <>
                 {navItems.map((item, i) => (
-                    <Link key={i} style={{ marginRight: rhythm(0.5) }} to={item.link}>
+                    <LinkStyled key={i} to={item.link}>
                         {item.label}
-                    </Link>
+                    </LinkStyled>
                 ))}
             </>
         )

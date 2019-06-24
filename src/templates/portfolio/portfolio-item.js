@@ -1,6 +1,5 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { rhythm } from '../../utils/typography'
 
 import Layout from '../../components/layout'
 import SEO from '../../components/seo'
@@ -22,11 +21,6 @@ class PortfolioItemTemplate extends React.Component {
                 </div>
                 <TechList tech={post.frontmatter.tech} />
                 <div dangerouslySetInnerHTML={{ __html: post.html }} />
-                <hr
-                    style={{
-                        marginBottom: rhythm(1),
-                    }}
-                />
             </Layout>
         )
     }

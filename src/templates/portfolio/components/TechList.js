@@ -1,19 +1,27 @@
 import React from 'react'
 import { rhythm, scale } from '../../../utils/typography'
+import styled from 'styled-components'
+
+const { fontSize, lineHeight } = scale(1.5)
+
+const Item = styled.span`
+    background-color: #000;
+    color: #fff;
+    font-family: Montserrat, sans-serif;
+    font-size: ${fontSize};
+    line-height: ${lineHeight};
+`
+
+const ItemWrapper = styled.div`
+    display: flex;
+    margin-bottom: ${rhythm(1)};
+    justify-content: space-between;
+`
 
 function TechListItem({ item }) {
     return (
         <>
-            <span
-                style={{
-                    ...scale(1.5),
-                    backgroundColor: `#000`,
-                    color: `#fff`,
-                    fontFamily: `Montserrat, sans-serif`,
-                }}
-            >
-                {item.charAt(0)}
-            </span>
+            <Item>{item.charAt(0)}</Item>
             <span>{item}</span>
         </>
     )
@@ -21,20 +29,14 @@ function TechListItem({ item }) {
 
 function TechList({ tech }) {
     return (
-        <div
-            style={{
-                display: `flex`,
-                marginBottom: rhythm(1),
-                justifyContent: `space-between`,
-            }}
-        >
+        <ItemWrapper>
             {tech
                 .split(',')
                 .map((i) => i.trim())
                 .map((item, i) => (
                     <TechListItem item={item} key={i} />
                 ))}
-        </div>
+        </ItemWrapper>
     )
 }
 

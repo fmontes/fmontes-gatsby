@@ -1,8 +1,33 @@
 import React from 'react'
 import { rhythm, scale } from '../utils/typography'
-import { Link } from 'gatsby'
-import { useStaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql, Link } from 'gatsby'
+import styled from 'styled-components'
 import Menu from './Menu'
+
+const LinkStyled = styled(Link)`
+    box-shadow: none;
+    text-decoration: none;
+    color: inherit;
+`
+
+const { fontSize, lineHeight } = scale(1.5)
+
+const HomeHeader = styled.h1`
+    font-size: ${fontSize};
+    line-height: ${lineHeight};
+    margin-bottom: ${rhythm(1.5)};
+    margin-top: 0;
+`
+
+const InternalHeader = styled.h3`
+    font-family: Montserrat, sans-serif;
+    margin-top: 0;
+`
+
+const NavWrapper = styled.nav`
+    margin-bottom: ${rhythm(1.5)};
+    margin-top: 0;
+`
 
 const isHome = (path) => {
     return `${__PATH_PREFIX__}/` === path
@@ -22,56 +47,23 @@ function Header({ location }) {
         `
     )
     const content = (
-        <Link
-            style={{
-                boxShadow: `none`,
-                textDecoration: `none`,
-                color: `inherit`,
-            }}
-            to={`/`}
-        >
-            {`${site.siteMetadata.author} ${site.siteMetadata.title}`}
-        </Link>
+        <LinkStyled to={`/`}>{`${site.siteMetadata.author} ${site.siteMetadata.title}`}</LinkStyled>
     )
 
     let header
 
     if (isHome(location.pathname)) {
-        header = (
-            <h1
-                style={{
-                    ...scale(1.5),
-                    marginBottom: rhythm(1.5),
-                    marginTop: 0,
-                }}
-            >
-                {content}
-            </h1>
-        )
+        header = <HomeHeader>{content}</HomeHeader>
     } else {
-        header = (
-            <h3
-                style={{
-                    fontFamily: `Montserrat, sans-serif`,
-                    marginTop: 0,
-                }}
-            >
-                {content}
-            </h3>
-        )
+        header = <InternalHeader>{content}</InternalHeader>
     }
 
     return (
         <header>
             {header}
-            <nav
-                style={{
-                    marginBottom: rhythm(1.5),
-                    marginTop: 0,
-                }}
-            >
+            <NavWrapper>
                 <Menu />
-            </nav>
+            </NavWrapper>
         </header>
     )
 }

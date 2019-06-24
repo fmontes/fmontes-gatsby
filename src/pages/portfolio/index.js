@@ -1,12 +1,17 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
 
-import Bio from '../../components/bio'
+import { rhythm } from '../../utils/typography'
+import styled from 'styled-components'
+
 import Layout from '../../components/layout'
 import SEO from '../../components/seo'
-import { rhythm } from '../../utils/typography'
 
-class BlogIndex extends React.Component {
+const PortfolioTitle = styled.h3`
+    margin-bottom: ${rhythm(1 / 4)};
+`
+
+class PortfolioIndex extends React.Component {
     render() {
         const { data } = this.props
         const siteTitle = `${this.props.data.site.siteMetadata.author} ${this.props.data.site.siteMetadata.title}`
@@ -15,21 +20,13 @@ class BlogIndex extends React.Component {
         return (
             <Layout location={this.props.location} title={siteTitle}>
                 <SEO title="All posts" />
-                <Bio />
                 {posts.map(({ node }) => {
                     const title = node.frontmatter.title || node.fields.slug
                     return (
                         <div key={node.fields.slug}>
-                            <h3
-                                style={{
-                                    marginBottom: rhythm(1 / 4),
-                                }}
-                            >
-                                <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
-                                    {title}
-                                </Link>
-                            </h3>
-                            <small>{node.frontmatter.date}</small>
+                            <PortfolioTitle>
+                                <Link to={node.fields.slug}>{title}</Link>
+                            </PortfolioTitle>
                             <p
                                 dangerouslySetInnerHTML={{
                                     __html: node.frontmatter.description || node.excerpt,
@@ -43,7 +40,7 @@ class BlogIndex extends React.Component {
     }
 }
 
-export default BlogIndex
+export default PortfolioIndex
 
 export const pageQuery = graphql`
     query {
@@ -54,8 +51,8 @@ export const pageQuery = graphql`
             }
         }
         allMarkdownRemark(
-            sort: { fields: [frontmatter___date], order: DESC },
-            filter: {fileAbsolutePath: {regex: "/portfolio/.*.md$/"}}
+            sort: { fields: [frontmatter___date], order: DESC }
+            filter: { fileAbsolutePath: { regex: "/portfolio/.*.md$/" } }
         ) {
             edges {
                 node {
