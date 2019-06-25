@@ -4,6 +4,7 @@ import { graphql } from 'gatsby'
 import Layout from '../../components/layout'
 import SEO from '../../components/seo'
 import TechList from './components/TechList';
+import Separator from '../../components/Separator'
 
 class PortfolioItemTemplate extends React.Component {
     render() {
@@ -19,7 +20,10 @@ class PortfolioItemTemplate extends React.Component {
                     <h1>{post.frontmatter.title}</h1>
                     <h2>{post.frontmatter.description}</h2>
                 </div>
+
+                <h3>Tech Stack</h3>
                 <TechList tech={post.frontmatter.tech} />
+                <Separator />
                 <div dangerouslySetInnerHTML={{ __html: post.html }} />
             </Layout>
         )

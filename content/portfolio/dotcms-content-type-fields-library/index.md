@@ -1,7 +1,7 @@
 ---
 title: DotCMS Content Type Fields Library
 description: Create a Web Component Library for Form Fields
-tech: StencilJS, Web Components, SCSS
+tech: StencilJS, Web Components, SASS
 ---
 
 DotCMS helps you manage and deliver content across all channels, devices, and platforms. 

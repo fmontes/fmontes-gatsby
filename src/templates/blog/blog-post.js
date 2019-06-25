@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import Bio from '../../components/bio'
 import Layout from '../../components/layout'
 import SEO from '../../components/seo'
+import Separator from '../../components/Separator'
 
 const { fontSize, lineHeight } = scale(-1 / 5)
 
@@ -15,10 +16,6 @@ const Date = styled.p`
     line-height: ${lineHeight};
     margin-bottom: ${rhythm(1)};
     margin-top: ${rhythm(-1)};
-`
-
-const Separator = styled.hr`
-    margin-bottom: ${rhythm(1)};
 `
 
 const PaginationList = styled.ul`
