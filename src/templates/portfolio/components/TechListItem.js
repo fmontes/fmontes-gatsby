@@ -8,9 +8,9 @@ import Angular from '../../../assets/tech-logos/angular.svg'
 import RxJS from '../../../assets/tech-logos/rxjs.svg'
 import Dragula from '../../../assets/tech-logos/dragula.svg'
 
-const { fontSize, lineHeight } = scale(1)
+let { fontSize, lineHeight } = scale(1)
 
-const size = '70px'
+export const size = '70px'
 
 const fallbackColors = {
     'Web Components': '#e66e33',
@@ -40,10 +40,13 @@ const IconWrapper = styled.div`
     width: ${size};
 `
 
+
 const ItemLabel = styled.span`
     font-family: Montserrat, sans-serif;
     font-size: 0.75rem;
     text-transform: uppercase;
+    text-align: center;
+    line-height: 1.5em;
 `
 
 const Item = styled.div`

@@ -1,13 +1,15 @@
 import React from 'react'
 import { rhythm } from '../../../utils/typography'
 import styled from 'styled-components'
+import { size } from './TechListItem'
 
 import TechListItem from './TechListItem'
 
 const ItemWrapper = styled.div`
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(${size}, 1fr));
     margin-bottom: ${rhythm(1)};
-    justify-content: space-between;
+    grid-gap: 1rem;
 `
 
 function TechList({ tech }) {
