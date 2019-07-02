@@ -6,8 +6,14 @@ import Header from '../components/Header'
 const Wrapper = styled.div`
     margin-left: auto;
     margin-right: auto;
-    max-width: ${rhythm(24)};
     padding: ${rhythm(1.5)} ${rhythm(3 / 4)};
+
+    @media (min-width: 768px) {
+        max-width: ${rhythm(34)};
+        display: grid;
+        grid-gap: ${rhythm(2)};
+        grid-template-columns: ${rhythm(8)} minmax(0, 1fr);
+    }
 `
 
 class Layout extends React.Component {
