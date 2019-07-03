@@ -4,8 +4,8 @@ import { Link, graphql } from 'gatsby'
 import { rhythm } from '../../utils/typography'
 import styled from 'styled-components'
 
-import Layout from '../../components/layout'
-import SEO from '../../components/seo'
+import Layout from '../../components/Layout'
+import SEO from '../../components/Seo'
 
 const PortfolioTitle = styled.h3`
     margin-bottom: ${rhythm(1 / 4)};
@@ -23,7 +23,7 @@ class PortfolioIndex extends React.Component {
                 {posts.map(({ node }) => {
                     const title = node.frontmatter.title || node.fields.slug
                     return (
-                        <div key={node.fields.slug}>
+                        <article key={node.fields.slug}>
                             <PortfolioTitle>
                                 <Link to={node.fields.slug}>{title}</Link>
                             </PortfolioTitle>
@@ -32,7 +32,7 @@ class PortfolioIndex extends React.Component {
                                     __html: node.frontmatter.description || node.excerpt,
                                 }}
                             />
-                        </div>
+                        </article>
                     )
                 })}
             </Layout>

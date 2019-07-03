@@ -6,16 +6,24 @@
  */
 
 import React from 'react'
-import { StaticQuery, graphql } from 'gatsby'
+import { StaticQuery, graphql, Link } from 'gatsby'
 import Image from 'gatsby-image'
 import styled from 'styled-components'
-import { rhythm } from '../utils/typography'
+import { rhythm, options } from '../utils/typography'
 
-const BioWrapper = styled.div`
+const Logo = styled(Link)`
+    align-items: flex-start;
+    box-shadow: none;
+    color: ${options.bodyColor};
     display: flex;
 
+    &:hover,
+    &:active {
+        box-shadow: none;
+        color: ${options.bodyColor};
+    }
+
     @media (min-width: 768px) {
-        align-items: center;
         flex-direction: column;
     }
 `
@@ -28,10 +36,15 @@ const ImageStyled = styled(Image)`
     min-width: 50px;
 
     @media (min-width: 768px) {
+        align-self: center;
         height: 100px;
-        margin: 0 0 ${rhythm(1 / 2)};
+        margin: 0 0 ${rhythm(1)};
         min-width: 100px;
     }
+`
+
+const Name = styled.h3`
+    margin: 0 0 ${rhythm(1 / 2)};
 `
 
 function Bio() {
@@ -39,21 +52,23 @@ function Bio() {
         <StaticQuery
             query={bioQuery}
             render={(data) => {
-                const { author } = data.site.siteMetadata
+                const { author, title, description } = data.site.siteMetadata
                 return (
-                    <BioWrapper>
-                        <ImageStyled
-                            fluid={data.avatar.childImageSharp.fluid}
-                            alt={author}
-                            imgStyle={{
-                                borderRadius: `50%`,
-                            }}
-                        />
-                        <p>
-                            Frontend Developer with a graphic design degree. UX/UI and Javascript
-                            crafter.
-                        </p>
-                    </BioWrapper>
+                    <>
+                        <Logo to={`/`} title="Link to home">
+                            <ImageStyled
+                                fluid={data.avatar.childImageSharp.fluid}
+                                alt={`${author} ${title}`}
+                                imgStyle={{
+                                    borderRadius: `50%`,
+                                }}
+                            />
+                            <div>
+                                <Name>{author}</Name>
+                                <p>{description}</p>
+                            </div>
+                        </Logo>
+                    </>
                 )
             }}
         />
@@ -72,9 +87,8 @@ const bioQuery = graphql`
         site {
             siteMetadata {
                 author
-                social {
-                    twitter
-                }
+                title
+                description
             }
         }
     }

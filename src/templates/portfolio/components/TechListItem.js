@@ -24,7 +24,7 @@ const Fallback = styled.div`
     border-radius: 35px;
     color: #fff;
     display: flex;
-    font-family: Montserrat, sans-serif;
+    font-family: Ubuntu, sans-serif;
     font-size: ${fontSize};
     height: ${size};
     justify-content: center;
@@ -42,7 +42,7 @@ const IconWrapper = styled.div`
 
 
 const ItemLabel = styled.span`
-    font-family: Montserrat, sans-serif;
+    font-family: Ubuntu, sans-serif;
     font-size: 0.75rem;
     text-transform: uppercase;
     text-align: center;

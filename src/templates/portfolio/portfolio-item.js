@@ -1,8 +1,8 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 
-import Layout from '../../components/layout'
-import SEO from '../../components/seo'
+import Layout from '../../components/Layout'
+import SEO from '../../components/Seo'
 import TechList from './components/TechList';
 import Separator from '../../components/Separator'
 
@@ -18,7 +18,7 @@ class PortfolioItemTemplate extends React.Component {
                 />
                 <div className="heading">
                     <h1>{post.frontmatter.title}</h1>
-                    <h2>{post.frontmatter.description}</h2>
+                    <blockquote>{post.frontmatter.description}</blockquote>
                 </div>
 
                 <h3>Tech Stack</h3>

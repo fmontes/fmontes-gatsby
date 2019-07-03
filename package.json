@@ -29,6 +29,7 @@
         "gatsby-source-filesystem": "^2.0.38",
         "gatsby-transformer-remark": "^2.3.12",
         "gatsby-transformer-sharp": "^2.1.21",
+        "gray-percentage": "^2.0.0",
         "lazysizes": "^5.1.0",
         "prismjs": "^1.16.0",
         "react": "^16.8.6",
@@ -36,10 +37,9 @@
         "react-helmet": "^5.2.1",
         "react-typography": "^0.16.19",
         "styled-components": "^4.3.2",
-        "typeface-merriweather": "0.0.72",
-        "typeface-montserrat": "0.0.54",
-        "typography": "^0.16.19",
-        "typography-theme-wordpress-2016": "^0.16.19"
+        "typeface-inconsolata": "^0.0.72",
+        "typeface-ubuntu": "^0.0.65",
+        "typography": "^0.16.19"
     },
     "devDependencies": {
         "prettier": "^1.18.0"

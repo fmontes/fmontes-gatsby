@@ -3,9 +3,9 @@ import { Link, graphql } from 'gatsby'
 import { rhythm, scale } from '../../utils/typography'
 import styled from 'styled-components'
 
-import Bio from '../../components/bio'
-import Layout from '../../components/layout'
-import SEO from '../../components/seo'
+import Bio from '../../components/Bio'
+import Layout from '../../components/Layout'
+import SEO from '../../components/Seo'
 import Separator from '../../components/Separator'
 
 const { fontSize, lineHeight } = scale(-1 / 5)
