@@ -3,7 +3,6 @@ import { Link, graphql } from 'gatsby'
 import { rhythm, scale } from '../../utils/typography'
 import styled from 'styled-components'
 
-import Bio from '../../components/Bio'
 import Layout from '../../components/Layout'
 import SEO from '../../components/Seo'
 import Separator from '../../components/Separator'
@@ -23,7 +22,13 @@ const PaginationList = styled.ul`
     flex-wrap: wrap;
     justify-content: space-between;
     list-style: none;
+    margin: 0;
     padding: 0;
+
+    li {
+        margin: 0 ${rhythm(1)};
+        flex: 1;
+    }
 `
 
 class BlogPostTemplate extends React.Component {
@@ -42,7 +47,6 @@ class BlogPostTemplate extends React.Component {
                 <Date>{post.frontmatter.date}</Date>
                 <div class="post__content" dangerouslySetInnerHTML={{ __html: post.html }} />
                 <Separator />
-                <Bio />
 
                 <PaginationList>
                     <li>
