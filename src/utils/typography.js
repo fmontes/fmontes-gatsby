@@ -28,7 +28,7 @@ const typography = new Typography({
         },
         'h1,h2,h3,h4,h5,h6': {
             marginTop: rhythm(2),
-            letterSpacing: '-0.025em'
+            letterSpacing: '-0.025em',
         },
         blockquote: {
             ...scale(1 / 5),
@@ -55,6 +55,16 @@ const typography = new Typography({
         '.gatsby-highlight': {
             marginBottom: `${rhythm(1)}`,
         },
+        '.post__content code[class*="language-"], .post__content code[class*="language-"]': {
+            fontSize: '0.75rem',
+        },
+        '.post__content pre[class*="language-"]::before, .post__content pre[class*="language-"]::after': {
+            display: 'none',
+        },
+        '.post__content pre[class*="language-"] > code': {
+            borderColor: options.color.primary,
+            borderWidth: '5px'
+        }
     }),
 })
 

@@ -40,7 +40,7 @@ class BlogPostTemplate extends React.Component {
                 />
                 <h1>{post.frontmatter.title}</h1>
                 <Date>{post.frontmatter.date}</Date>
-                <div dangerouslySetInnerHTML={{ __html: post.html }} />
+                <div class="post__content" dangerouslySetInnerHTML={{ __html: post.html }} />
                 <Separator />
                 <Bio />
 

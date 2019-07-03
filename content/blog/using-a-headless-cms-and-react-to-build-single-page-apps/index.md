@@ -122,7 +122,7 @@ interface Layout {
 Now, let's go over the properties we'll be using to create our page using React components:
 
 - `header` and `footer`: used to show or hide the header or footer.
-- `Body.rows`: this property has all the rows, columns and containers, we will iterate over and render. This object is the representation of the layout of our page.
+- `body.rows`: this property has all the rows, columns and containers, we will iterate over and render. This object is the representation of the layout of our page.
 - `body.rows.columns`: each column contains all the grid information, like the width and the offset of the column as well as the containers inside it. With this information, we'll be able to add any CSS class based on the column width or offset. Since dotCMS is framework agnostic, you can use any CSS Framework, CSS grids or Flexbox.
 - `body.rows.columns.containers`: with the container identifier and uuid we can get all the page content.
 - `sidebar.location`: values can be left, right or empty, which represents NO sidebar.
