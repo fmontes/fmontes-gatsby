@@ -2,13 +2,16 @@ module.exports = {
     siteMetadata: {
         title: 'Frontend Javascript Developer',
         author: 'Freddy Montes',
-        description: 'Frontend Developer with a graphic design degree. UX/UI and Javascript crafter.',
+        description:
+            'Frontend Developer with a graphic design degree. UX/UI and Javascript crafter.',
         siteUrl: 'https://fmontes/',
         social: {
-            twitter: 'fmontes',
-            instagram: 'fmontes',
-            linkedin: 'fmontes',
-        },
+            github: '//github.com/fmontes/',
+            instagram: '//instagram.com/fmontes',
+            linkedin: '//linkedin.com/in/fmontes/',
+            stackoverflow: '//stackoverflow.com/users/3367318/fmontes',
+            twitter: '//twitter.com/fmontes',
+        }
     },
     plugins: [
         {
