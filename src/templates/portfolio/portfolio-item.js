@@ -24,7 +24,7 @@ class PortfolioItemTemplate extends React.Component {
                 <h3>Tech Stack</h3>
                 <TechList tech={post.frontmatter.tech} />
                 <Separator />
-                <div dangerouslySetInnerHTML={{ __html: post.html }} />
+                <div class="post__content" dangerouslySetInnerHTML={{ __html: post.html }} />
             </Layout>
         )
     }

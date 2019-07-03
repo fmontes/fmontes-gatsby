@@ -1,7 +1,7 @@
 import React from 'react'
 import { rhythm } from '../utils/typography'
 import styled from 'styled-components'
-import { StaticQuery } from 'gatsby'
+import { StaticQuery, graphql } from 'gatsby'
 
 import twitter from '../assets/social-icons/twitter.svg'
 import instagram from '../assets/social-icons/instagram.svg'

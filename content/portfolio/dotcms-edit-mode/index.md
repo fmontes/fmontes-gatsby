@@ -12,6 +12,14 @@ One of the key features of the platforms is “Edit Mode”, is the place where 
 2. Edit properties: title, description, permissions, etc…
 3. Publish or published a page.
 
+### Demo
+- https://demo.dotcms.com/c
+- User: admin@dotcms.com
+- Password: admin
+- Go to `Site > Browser` and double click any page
+
+![DotCMS Edit Mode](./edit-mode.png)
+
 ### Challenge
 Edit mode is a great feature but it was developed 10 years ago and never update or maintained. 
 
