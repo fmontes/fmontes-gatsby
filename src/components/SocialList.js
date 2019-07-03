@@ -48,7 +48,7 @@ function SocialList() {
                         {Object.keys(social).map((media, i) => {
                             const Icon = Icons[media]
                             return (
-                                <ItemWrapper target="_blank" key={i} href={social[media]}>
+                                <ItemWrapper rel="noreferrer" aria-label={`Link to ${media} account`} target="_blank" key={i} href={social[media]}>
                                     <Icon />
                                 </ItemWrapper>
                             )
