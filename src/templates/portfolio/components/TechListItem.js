@@ -1,5 +1,5 @@
 import React from 'react'
-import { rhythm, scale } from '../../../utils/typography'
+import { rhythm, scale, options } from '../../../utils/typography'
 import styled from 'styled-components'
 
 import StencilJS from '../../../assets/tech-logos/stencil.svg'
@@ -15,16 +15,16 @@ export const size = '70px'
 const fallbackColors = {
     'Web Components': '#e66e33',
     'Custom Events': '#00539f',
-    'CSS Properties': '#009400'
+    'CSS Properties': '#009400',
 }
 
-const Fallback = styled.div`
+const FallbackWrapper = styled.div`
     align-items: center;
-    background-color: ${({item}) => fallbackColors[item] || '#000'};
+    background-color: ${({ item }) => fallbackColors[item] || '#000'};
     border-radius: 35px;
     color: #fff;
     display: flex;
-    font-family: Ubuntu, sans-serif;
+    font-family: ${options.headerFontFamily.join(', ')};
     font-size: ${fontSize};
     height: ${size};
     justify-content: center;
@@ -39,7 +39,6 @@ const IconWrapper = styled.div`
     margin-bottom: ${rhythm(0.25)};
     width: ${size};
 `
-
 
 const ItemLabel = styled.span`
     font-family: Ubuntu, sans-serif;
@@ -63,12 +62,23 @@ const logos = {
     Dragula,
 }
 
+function Fallback({ item }) {
+    return (
+        <FallbackWrapper item={item}>
+            {item
+                .split(' ')
+                .map((word) => word.charAt(0))
+                .join('')}
+        </FallbackWrapper>
+    )
+}
+
 function TechListItem({ item }) {
     const Icon = logos[item]
 
     return (
         <Item>
-            <IconWrapper>{Icon ? <Icon /> : <Fallback item={item}>{item.charAt(0)}</Fallback>}</IconWrapper>
+            <IconWrapper>{Icon ? <Icon /> : <Fallback item={item} />}</IconWrapper>
             <ItemLabel>{item}</ItemLabel>
         </Item>
     )
