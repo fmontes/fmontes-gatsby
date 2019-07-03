@@ -9,11 +9,18 @@ const Wrapper = styled.div`
     padding: ${rhythm(1)};
 
     @media (min-width: 768px) {
-        display: grid;
-        grid-gap: ${rhythm(2)};
-        grid-template-columns: ${rhythm(8)} minmax(0, 1fr);
         max-width: ${rhythm(33.25)};
-        padding: ${rhythm(1.5)} ${rhythm(3 / 4)};
+        padding: ${rhythm(1.5)} 0;
+
+        main {
+            margin-left: ${rhythm(10)};
+            min-height: ${rhythm(18)};
+        }
+
+        header {
+            width: ${rhythm(8)};
+            position: fixed;
+        }
     }
 `
 
