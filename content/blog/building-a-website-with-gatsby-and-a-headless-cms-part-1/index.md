@@ -1,6 +1,7 @@
 ---
 title: Building a Website With Gatsby and a Headless CMS - Part 1
-date: '2019-01-09T22:12:03.284Z'
+date: '2019-01-09T22:12:02.284Z'
+description: 'This article will walk you through the process of using Gatsby alongside a headless CMS.'
 ---
 
 **This is a two part series blog post, [here is the second part](/blog/building-a-website-with-gatsby-and-a-headless-cms-part-2).**

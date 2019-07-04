@@ -1,6 +1,7 @@
 ---
 title: Building a Website With Gatsby and a Headless CMS - Part 2
 date: '2019-01-09T22:12:03.284Z'
+description: 'Now we start bulding the Gatsby source plugin to get the data and create the pages.'
 ---
 
 **This is a two part series blog post, [here is the first part](/blog/building-a-website-with-gatsby-and-a-headless-cms-part-1).**

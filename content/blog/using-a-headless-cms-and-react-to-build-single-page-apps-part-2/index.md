@@ -1,7 +1,7 @@
 ---
 title: Using a Headless CMS and React to Build Single Page Apps - Part 2
 date: '2019-03-19T22:40:32.169Z'
-description: A headless CMS system allows users to control all the content, with strict separation from the display or front-end layers.
+description: Let's create the page component and add content by using the REST API, we'll be able to create rows and colums.
 ---
 
 **This is a two part series blog post, [here is the first part](/blog/using-a-headless-cms-and-react-to-build-single-page-apps-part-1).**
