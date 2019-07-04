@@ -27,11 +27,10 @@ class PortfolioIndex extends React.Component {
                             <PortfolioTitle>
                                 <Link to={node.fields.slug}>{title}</Link>
                             </PortfolioTitle>
-                            <p
-                                dangerouslySetInnerHTML={{
-                                    __html: node.frontmatter.description || node.excerpt,
-                                }}
-                            />
+                            <p>
+                                <time>{node.frontmatter.date}</time> — {' '}
+                                {node.frontmatter.description || node.excerpt}
+                            </p>
                         </article>
                     )
                 })}
@@ -61,7 +60,7 @@ export const pageQuery = graphql`
                         slug
                     }
                     frontmatter {
-                        date(formatString: "MMMM DD, YYYY")
+                        date(formatString: "MMMM YYYY")
                         title
                         description
                     }

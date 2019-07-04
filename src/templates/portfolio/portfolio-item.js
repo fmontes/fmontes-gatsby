@@ -1,10 +1,22 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import { rhythm, scale } from '../../utils/typography'
+import styled from 'styled-components'
 
 import Layout from '../../components/Layout'
 import SEO from '../../components/Seo'
-import TechList from './components/TechList';
+import TechList from './components/TechList'
 import Separator from '../../components/Separator'
+
+const { fontSize, lineHeight } = scale(1 / 2)
+
+const Date = styled.p`
+    display: block;
+    font-size: ${fontSize};
+    line-height: ${lineHeight};
+    margin-bottom: ${rhythm(1)};
+    margin-top: ${rhythm(-1)};
+`
 
 class PortfolioItemTemplate extends React.Component {
     render() {
@@ -16,10 +28,11 @@ class PortfolioItemTemplate extends React.Component {
                     title={post.frontmatter.title}
                     description={post.frontmatter.description || post.excerpt}
                 />
-                <div className="heading">
+                <header>
                     <h1>{post.frontmatter.title}</h1>
-                    <blockquote>{post.frontmatter.description}</blockquote>
-                </div>
+                    <Date>{post.frontmatter.date}</Date>
+                </header>
+                <blockquote>{post.frontmatter.description}</blockquote>
 
                 <h3>Tech Stack</h3>
                 <TechList tech={post.frontmatter.tech} />
@@ -48,6 +61,7 @@ export const pageQuery = graphql`
                 title
                 description
                 tech
+                date(formatString: "MMMM YYYY")
             }
         }
     }

@@ -24,11 +24,6 @@ const Wrapper = styled.div`
         main {
             min-height: ${rhythm(18)};
         }
-
-        header {
-            width: ${rhythm(8)};
-            position: fixed;
-        }
     }
 `
 
