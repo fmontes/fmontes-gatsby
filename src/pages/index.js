@@ -4,6 +4,7 @@ import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import SEO from '../components/Seo'
 import BlogItem from '../components/BlogItem'
+import PageTitle from '../components/PageTitle'
 
 class BlogIndex extends React.Component {
     render() {
@@ -13,6 +14,7 @@ class BlogIndex extends React.Component {
         return (
             <Layout location={this.props.location}>
                 <SEO title="Blog" />
+                <PageTitle>Recent Blog Posts</PageTitle>
                 {posts.map(({ node }, i) => (
                     <BlogItem item={node} key={i} />
                 ))}

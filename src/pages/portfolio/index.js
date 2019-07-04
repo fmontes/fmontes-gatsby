@@ -7,6 +7,7 @@ import styled from 'styled-components'
 
 import Layout from '../../components/Layout'
 import SEO from '../../components/Seo'
+import PageTitle from '../../components/PageTitle'
 
 const PortfolioTitle = styled.h3`
     margin-bottom: ${rhythm(1 / 4)};
@@ -67,6 +68,7 @@ function PortfolioIndex(props) {
     return (
         <Layout location={props.location} title={siteTitle}>
             <SEO title="Portfolio" />
+            <PageTitle>Cases of Study</PageTitle>
             <PortfolioList>
                 {posts.map(({ node }, i) => (
                     <PortfolioItem key={i} item={node} />
