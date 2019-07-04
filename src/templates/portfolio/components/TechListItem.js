@@ -41,7 +41,6 @@ const IconWrapper = styled.div`
 `
 
 const ItemLabel = styled.span`
-    font-family: Ubuntu, sans-serif;
     font-size: 0.75rem;
     text-transform: uppercase;
     text-align: center;
