@@ -34,12 +34,14 @@ const ImageStyled = styled(Image)`
     margin-bottom: 0;
     margin-right: ${rhythm(1 / 2)};
     min-width: 50px;
+    width: 50px;
 
     @media (min-width: 768px) {
         align-self: center;
         height: 100px;
         margin: 0 0 ${rhythm(1)};
         min-width: 100px;
+        width: 100px;
     }
 `
 
