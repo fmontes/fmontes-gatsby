@@ -23,9 +23,23 @@ const Wrapper = styled.div`
 `
 
 const ItemWrapper = styled.a`
-    width: 24px;
-    margin-right: ${rhythm(1 / 2)};
+    border: solid 1px;
     box-shadow: none;
+    display: flex;
+    height: 48px;
+    justify-content: center;
+    margin-right: ${rhythm(1 / 2)};
+    min-width: 48px;
+
+    @media (min-width: 768px) {
+        display: block;
+        height: 24px;
+        min-width: 24px;
+    }
+
+    svg {
+        width: 24px;
+    }
 
     &:hover,
     &:active {
@@ -48,7 +62,13 @@ function SocialList() {
                         {Object.keys(social).map((media, i) => {
                             const Icon = Icons[media]
                             return (
-                                <ItemWrapper rel="noreferrer" aria-label={`Link to ${media} account`} target="_blank" key={i} href={social[media]}>
+                                <ItemWrapper
+                                    rel="noreferrer"
+                                    aria-label={`Link to ${media} account`}
+                                    target="_blank"
+                                    key={i}
+                                    href={social[media]}
+                                >
                                     <Icon />
                                 </ItemWrapper>
                             )
