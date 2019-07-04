@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
+import Image from 'gatsby-image'
 
 import { rhythm } from '../../utils/typography'
 import styled from 'styled-components'
@@ -9,34 +10,74 @@ import SEO from '../../components/Seo'
 
 const PortfolioTitle = styled.h3`
     margin-bottom: ${rhythm(1 / 4)};
+    margin-top: 0;
 `
 
-class PortfolioIndex extends React.Component {
-    render() {
-        const { data } = this.props
-        const siteTitle = `${this.props.data.site.siteMetadata.author} ${this.props.data.site.siteMetadata.title}`
-        const posts = data.allMarkdownRemark.edges
+const PortfolioItemStyled = styled.article`
+    align-items: center;
+    display: grid;
+    grid-gap: ${rhythm(1)};
+    grid-template-columns: repeat(auto-fit, minmax(${rhythm(11)}, 1fr));
 
-        return (
-            <Layout location={this.props.location} title={siteTitle}>
-                <SEO title="Portfolio" />
-                {posts.map(({ node }) => {
-                    const title = node.frontmatter.title || node.fields.slug
-                    return (
-                        <article key={node.fields.slug}>
-                            <PortfolioTitle>
-                                <Link to={node.fields.slug}>{title}</Link>
-                            </PortfolioTitle>
-                            <p>
-                                <time>{node.frontmatter.date}</time> — {' '}
-                                {node.frontmatter.description || node.excerpt}
-                            </p>
-                        </article>
-                    )
-                })}
-            </Layout>
-        )
+    /* .content {
+        margin: 0 ${rhythm(1 / 4)};
+    } */
+`
+
+const ImageWrapperLink = styled(Link)`
+    box-shadow: none;
+    width: 100%;
+
+    &:hover,
+    &:active {
+        box-shadow: none;
     }
+
+    img {
+        margin-bottom: 0;
+    }
+`
+
+function PortfolioItem({ item }) {
+    const title = item.frontmatter.title || item.fields.slug
+    return (
+        <PortfolioItemStyled>
+            <ImageWrapperLink to={item.fields.slug}>
+                <Image fluid={item.frontmatter.thumbnail.childImageSharp.fluid} />
+            </ImageWrapperLink>
+            <div className="content">
+                <PortfolioTitle>
+                    <Link to={item.fields.slug}>{title}</Link>
+                </PortfolioTitle>
+                <p>
+                    <time>{item.frontmatter.date}</time> —{' '}
+                    {item.frontmatter.description || item.excerpt}
+                </p>
+            </div>
+        </PortfolioItemStyled>
+    )
+}
+
+const PortfolioList = styled.div`
+    display: grid;
+    grid-gap: ${rhythm(1.5)};
+    margin-top: ${rhythm(2)};
+`
+
+function PortfolioIndex(props) {
+    const siteTitle = `${props.data.site.siteMetadata.author} ${props.data.site.siteMetadata.title}`
+    const posts = props.data.allMarkdownRemark.edges
+
+    return (
+        <Layout location={props.location} title={siteTitle}>
+            <SEO title="Portfolio" />
+            <PortfolioList>
+                {posts.map(({ node }, i) => (
+                    <PortfolioItem key={i} item={node} />
+                ))}
+            </PortfolioList>
+        </Layout>
+    )
 }
 
 export default PortfolioIndex
@@ -63,6 +104,13 @@ export const pageQuery = graphql`
                         date(formatString: "MMMM YYYY")
                         title
                         description
+                        thumbnail {
+                            childImageSharp {
+                                fluid(maxWidth: 720, maxHeight: 480) {
+                                    ...GatsbyImageSharpFluid
+                                }
+                            }
+                        }
                     }
                 }
             }

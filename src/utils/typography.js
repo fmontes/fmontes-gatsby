@@ -4,7 +4,8 @@ import gray from 'gray-percentage'
 const typography = new Typography({
     title: '@fmontes',
     baseFontSize: '18px',
-    baseLineHeight: 1.5625,
+    baseLineHeight: 1.5,
+    headerLineHeight: 1.5,
     headerFontFamily: ['Ubuntu', 'sans-serif'],
     bodyFontFamily: ['Inconsolata', 'sans-serif'],
     headerColor: 'hsla(0,0%,0%,1)',

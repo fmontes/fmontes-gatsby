@@ -3,6 +3,7 @@ title: DotCMS Edit Mode
 description: Plan, design and develop a edit page experience for enterprise CMS
 tech: Angular, RxJS, Custom Events, Dragula, CSS Properties
 date: '2018-08-08'
+thumbnail: './thumbnail.png'
 ---
 
 DotCMS helps you manage and deliver content across all channels, devices, and platforms. 

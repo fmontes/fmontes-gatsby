@@ -8,9 +8,13 @@ const Wrapper = styled.div`
     margin-right: auto;
     padding: ${rhythm(1)};
 
+    footer {
+        margin-top: ${rhythm(2)};
+    }
+
     @media (min-width: 768px) {
-        max-width: ${rhythm(33.25)};
-        padding: ${rhythm(1.5)} 0;
+        max-width: ${rhythm(36.25)};
+        padding: ${rhythm(1.5)};
 
         footer,
         main {
@@ -18,7 +22,7 @@ const Wrapper = styled.div`
         }
 
         footer {
-            margin-top: ${rhythm(5)};
+            margin-top: ${rhythm(4)};
         }
 
         main {

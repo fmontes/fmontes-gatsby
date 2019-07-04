@@ -11507,16 +11507,6 @@ typeface-inconsolata@^0.0.72:
   resolved "https://registry.yarnpkg.com/typeface-inconsolata/-/typeface-inconsolata-0.0.72.tgz#6b5c92132c7d3e83f7a17025087d8d717ada63d5"
   integrity sha512-ITFhcI2ANWmSEPVgQgPJHh6RyiCf1pnkRXj1VxjsxfSwRrXFGgGITRJV+HxW7kTRDx+3/6RReT2/SWsMPqJaTA==
 
-typeface-karla@^0.0.72:
-  version "0.0.72"
-  resolved "https://registry.yarnpkg.com/typeface-karla/-/typeface-karla-0.0.72.tgz#b0eec7f2f13e638d274c0bac6bd0c82379c958e9"
-  integrity sha512-PKqhkf7MxnRMCdWfLXYsY2eGY3R9aGO630P5CCXnndvmfTlEGgXtb6J6kx1UDcCgzNh115Cd0IP5AnFU8cCpKw==
-
-typeface-montserrat@^0.0.54:
-  version "0.0.54"
-  resolved "https://registry.yarnpkg.com/typeface-montserrat/-/typeface-montserrat-0.0.54.tgz#3fc338db6428d73485b75aa7bd2af8c9a55b9ab3"
-  integrity sha512-Typhap0PWT299+Va0G/8ZtycHMXrH4gBWKfiW977KEBx5rXUUCa70gvqLx1fdA0WAo6bhSAQmo8uc+QFAmjPww==
-
 typeface-ubuntu@^0.0.65:
   version "0.0.65"
   resolved "https://registry.yarnpkg.com/typeface-ubuntu/-/typeface-ubuntu-0.0.65.tgz#d2994cc4b1540ed4830cef7aae2a8c393c197a74"

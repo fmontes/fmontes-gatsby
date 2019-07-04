@@ -45,7 +45,7 @@ class BlogPostTemplate extends React.Component {
                 />
                 <h1>{post.frontmatter.title}</h1>
                 <Date>{post.frontmatter.date}</Date>
-                <div class="post__content" dangerouslySetInnerHTML={{ __html: post.html }} />
+                <div className="post__content" dangerouslySetInnerHTML={{ __html: post.html }} />
                 <Separator />
 
                 <PaginationList>
