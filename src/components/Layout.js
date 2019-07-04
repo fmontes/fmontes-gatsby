@@ -12,8 +12,16 @@ const Wrapper = styled.div`
         max-width: ${rhythm(33.25)};
         padding: ${rhythm(1.5)} 0;
 
+        footer,
         main {
             margin-left: ${rhythm(10)};
+        }
+
+        footer {
+            margin-top: ${rhythm(5)};
+        }
+
+        main {
             min-height: ${rhythm(18)};
         }
 
@@ -34,8 +42,7 @@ class Layout extends React.Component {
                 <main>{children}</main>
                 <footer>
                     © {new Date().getFullYear()}, Built with
-                    {` `}
-                    <a href="https://www.gatsbyjs.org">Gatsby</a>
+                    {` `} pure 🔥 and <a href="https://www.gatsbyjs.org">Gatsby</a>
                 </footer>
             </Wrapper>
         )
