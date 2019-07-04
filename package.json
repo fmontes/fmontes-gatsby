@@ -1,12 +1,9 @@
 {
     "name": "fmontes-gatsby",
     "private": true,
-    "description": "A starter for a blog powered by Gatsby and Markdown",
+    "description": "Freddy Montes Frontend Javascript Developer Site",
     "version": "0.1.0",
-    "author": "Kyle Mathews <mathews.kyle@gmail.com>",
-    "bugs": {
-        "url": "https://github.com/gatsbyjs/gatsby/issues"
-    },
+    "author": "Freddy Montes <freddymontes@gmail.com>",
     "dependencies": {
         "babel-plugin-styled-components": "^1.10.1",
         "gatsby": "^2.8.6",
