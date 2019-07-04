@@ -23,17 +23,16 @@ const Wrapper = styled.div`
 `
 
 const ItemWrapper = styled.a`
-    border: solid 1px;
     box-shadow: none;
     display: flex;
     height: 48px;
     justify-content: center;
-    margin-right: ${rhythm(1 / 2)};
     min-width: 48px;
 
     @media (min-width: 768px) {
         display: block;
         height: 24px;
+        margin-right: ${rhythm(1 / 2)};
         min-width: 24px;
     }
 
