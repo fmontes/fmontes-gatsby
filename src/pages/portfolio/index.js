@@ -18,10 +18,6 @@ const PortfolioItemStyled = styled.article`
     display: grid;
     grid-gap: ${rhythm(1)};
     grid-template-columns: repeat(auto-fit, minmax(${rhythm(11)}, 1fr));
-
-    /* .content {
-        margin: 0 ${rhythm(1 / 4)};
-    } */
 `
 
 const ImageWrapperLink = styled(Link)`
@@ -42,8 +38,8 @@ function PortfolioItem({ item }) {
     const title = item.frontmatter.title || item.fields.slug
     return (
         <PortfolioItemStyled>
-            <ImageWrapperLink to={item.fields.slug}>
-                <Image fluid={item.frontmatter.thumbnail.childImageSharp.fluid} />
+            <ImageWrapperLink aria-label={title} to={item.fields.slug}>
+                <Image alt={title} fluid={item.frontmatter.thumbnail.childImageSharp.fluid} />
             </ImageWrapperLink>
             <div className="content">
                 <PortfolioTitle>
