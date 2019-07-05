@@ -5,8 +5,8 @@ import { graphql } from 'gatsby'
 import Layout from '../../components/Layout'
 import SEO from '../../components/Seo'
 import PageTitle from '../../components/PageTitle'
-import CasesList from './components/CasesList'
-import ReposList from './components/ReposList'
+import CasesList from '../../components/CasesList'
+import ReposList from '../../components/ReposList'
 
 function PortfolioIndex({ data, location }) {
     const siteTitle = `${data.site.siteMetadata.author} ${data.site.siteMetadata.title}`

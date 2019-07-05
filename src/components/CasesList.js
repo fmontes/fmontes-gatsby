@@ -3,7 +3,7 @@ import { Link } from 'gatsby'
 import Image from 'gatsby-image'
 import styled from 'styled-components'
 
-import { rhythm } from '../../../utils/typography'
+import { rhythm } from '../utils/typography'
 
 const CaseItemStyled = styled.article`
     align-items: center;

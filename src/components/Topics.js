@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { rhythm, options } from '../../../utils/typography'
+import { rhythm, options } from '../utils/typography'
 
 const TopicsStyled = styled.div`
     display: flex;
