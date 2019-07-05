@@ -1,79 +1,25 @@
 import React from 'react'
-import { Link, graphql } from 'gatsby'
-import Image from 'gatsby-image'
 
-import { rhythm } from '../../utils/typography'
-import styled from 'styled-components'
+import { graphql } from 'gatsby'
 
 import Layout from '../../components/Layout'
 import SEO from '../../components/Seo'
 import PageTitle from '../../components/PageTitle'
+import CasesList from './components/CasesList'
+import ReposList from './components/ReposList'
 
-const PortfolioTitle = styled.h3`
-    margin-bottom: ${rhythm(1 / 4)};
-    margin-top: 0;
-`
-
-const PortfolioItemStyled = styled.article`
-    align-items: center;
-    display: grid;
-    grid-gap: ${rhythm(1)};
-    grid-template-columns: repeat(auto-fit, minmax(${rhythm(11)}, 1fr));
-`
-
-const ImageWrapperLink = styled(Link)`
-    box-shadow: none;
-    width: 100%;
-
-    &:hover,
-    &:active {
-        box-shadow: none;
-    }
-
-    img {
-        margin-bottom: 0;
-    }
-`
-
-function PortfolioItem({ item }) {
-    const title = item.frontmatter.title || item.fields.slug
-    return (
-        <PortfolioItemStyled>
-            <ImageWrapperLink aria-label={title} to={item.fields.slug}>
-                <Image alt={title} fluid={item.frontmatter.thumbnail.childImageSharp.fluid} />
-            </ImageWrapperLink>
-            <div className="content">
-                <PortfolioTitle>
-                    <Link to={item.fields.slug}>{title}</Link>
-                </PortfolioTitle>
-                <p>
-                    <time>{item.frontmatter.date}</time> —{' '}
-                    {item.frontmatter.description || item.excerpt}
-                </p>
-            </div>
-        </PortfolioItemStyled>
-    )
-}
-
-const PortfolioList = styled.div`
-    display: grid;
-    grid-gap: ${rhythm(1.5)};
-    margin-top: ${rhythm(2)};
-`
-
-function PortfolioIndex(props) {
-    const siteTitle = `${props.data.site.siteMetadata.author} ${props.data.site.siteMetadata.title}`
-    const posts = props.data.allMarkdownRemark.edges
+function PortfolioIndex({ data, location }) {
+    const siteTitle = `${data.site.siteMetadata.author} ${data.site.siteMetadata.title}`
+    const posts = data.allMarkdownRemark.edges
+    const repos = data.githubData.data.search.edges
 
     return (
-        <Layout location={props.location} title={siteTitle}>
+        <Layout location={location} title={siteTitle}>
             <SEO title="Portfolio" />
             <PageTitle>Cases of Study</PageTitle>
-            <PortfolioList>
-                {posts.map(({ node }, i) => (
-                    <PortfolioItem key={i} item={node} />
-                ))}
-            </PortfolioList>
+            <CasesList posts={posts} />
+            <PageTitle>My Lab</PageTitle>
+            <ReposList repos={repos} />
         </Layout>
     )
 }
@@ -82,6 +28,35 @@ export default PortfolioIndex
 
 export const pageQuery = graphql`
     query {
+        githubData {
+            data {
+                search {
+                    edges {
+                        node {
+                            name
+                            url
+                            homepageUrl
+                            description
+                            createdAt
+                            pushedAt
+                            primaryLanguage {
+                                id
+                                name
+                            }
+                            repositoryTopics {
+                                edges {
+                                    node {
+                                        topic {
+                                            name
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
         site {
             siteMetadata {
                 title

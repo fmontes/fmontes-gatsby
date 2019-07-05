@@ -11,7 +11,7 @@ module.exports = {
             linkedin: '//linkedin.com/in/fmontes/',
             stackoverflow: '//stackoverflow.com/users/3367318/fmontes',
             twitter: '//twitter.com/fmontes',
-        }
+        },
     },
     plugins: [
         {
@@ -87,6 +87,42 @@ module.exports = {
                     include: /src\/assets/,
                 },
             },
+        },
+        {
+            resolve: `gatsby-source-github-api`,
+            options: {
+                token: process.env.GITHUB_TOKEN,
+                graphQLQuery: `{
+                    search(query: "fmonteslab user:fmontes", type: REPOSITORY, first: 100) {
+                        edges {
+                            node {
+                                ... on Repository {
+                                    name
+                                    url
+                                    homepageUrl
+                                    description
+                                    createdAt
+                                    pushedAt
+                                    primaryLanguage {
+                                        id
+                                        name
+                                    }
+                                    repositoryTopics(first: 100) {
+                                        edges {
+                                            node {
+                                                topic {
+                                                    name
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                `,
+            }
         },
     ],
 }

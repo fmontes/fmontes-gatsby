@@ -16,6 +16,7 @@ const typography = new Typography({
     color: {
         primary: '#156D81',
         secondary: '#F4E060',
+        border: gray(90)
     },
     overrideStyles: ({ adjustFontSizeTo, scale, rhythm }, options) => ({
         a: {
