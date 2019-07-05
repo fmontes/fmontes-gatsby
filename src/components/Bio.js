@@ -10,6 +10,7 @@ import { StaticQuery, graphql, Link } from 'gatsby'
 import Image from 'gatsby-image'
 import styled from 'styled-components'
 import { rhythm, options } from '../utils/typography'
+import LocationIcon from '../assets/location.svg'
 
 const Logo = styled(Link)`
     align-items: flex-start;
@@ -46,7 +47,16 @@ const ImageStyled = styled(Image)`
 `
 
 const Name = styled.h3`
-    margin: 0 0 ${rhythm(1 / 2)};
+    margin: 0 0 ${rhythm(1 / 4)};
+`
+
+const Location = styled.p`
+    display: flex;
+    align-items: center;
+
+    svg {
+        margin-right: ${rhythm(1 / 8)}
+    }
 `
 
 function Bio() {
@@ -67,7 +77,8 @@ function Bio() {
                             />
                             <div>
                                 <Name>{author}</Name>
-                                <p>{description}</p>
+                                <Location><LocationIcon />Costa Rica (GMT-6)</Location>
+                                <p>{description} <Link to={'/about-me'}>More</Link></p>
                             </div>
                         </Logo>
                     </>

@@ -58,6 +58,10 @@ const navItems = [
         link: '/',
     },
     {
+        label: 'About me',
+        link: '/about-me',
+    },
+    {
         label: 'Portfolio',
         link: '/portfolio',
     },
