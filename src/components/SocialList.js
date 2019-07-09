@@ -17,7 +17,7 @@ const Icons = {
     github,
 }
 
-const Wrapper = styled.div`
+const Wrapper = styled.span`
     display: flex;
     margin-bottom: ${rhythm(1)};
 `

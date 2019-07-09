@@ -1,93 +1,86 @@
 module.exports = {
     siteMetadata: {
-        title: 'Frontend Javascript Developer',
-        author: 'Freddy Montes',
-        description:
-            'Frontend Developer with a graphic design degree. UX/UI and Javascript crafter.',
-        siteUrl: 'https://fmontes/',
+        title: `Frontend Javascript Developer`,
+        author: `Freddy Montes`,
+        description: `Frontend Developer with a graphic design degree. UX/UI and Javascript crafter.`,
+        siteUrl: `https://fmontes/`,
         social: {
-            github: '//github.com/fmontes/',
-            instagram: '//instagram.com/fmontes',
-            linkedin: '//linkedin.com/in/fmontes/',
-            stackoverflow: '//stackoverflow.com/users/3367318/fmontes',
-            twitter: '//twitter.com/fmontes',
+            github: `//github.com/fmontes/`,
+            instagram: `//instagram.com/fmontes`,
+            linkedin: `//linkedin.com/in/fmontes/`,
+            stackoverflow: `//stackoverflow.com/users/3367318/fmontes`,
+            twitter: `//twitter.com/fmontes`,
         },
     },
     plugins: [
+        `gatsby-plugin-styled-components`,
         {
-            resolve: `gatsby-plugin-styled-components`,
-            options: {
-                displayName: false
-            },
-        },
-        {
-            resolve: 'gatsby-source-filesystem',
+            resolve: `gatsby-source-filesystem`,
             options: {
                 path: `${__dirname}/content`,
-                name: 'content',
+                name: `content`,
             },
         },
         {
-            resolve: 'gatsby-source-filesystem',
+            resolve: `gatsby-source-filesystem`,
             options: {
                 path: `${__dirname}/content/assets`,
-                name: 'assets',
+                name: `assets`,
             },
         },
         {
-            resolve: 'gatsby-transformer-remark',
+            resolve: `gatsby-transformer-remark`,
             options: {
                 plugins: [
                     {
-                        resolve: 'gatsby-remark-images',
+                        resolve: `gatsby-remark-images`,
                         options: {
                             maxWidth: 660,
                         },
                     },
                     {
-                        resolve: 'gatsby-remark-responsive-iframe',
+                        resolve: `gatsby-remark-responsive-iframe`,
                         options: {
-                            wrapperStyle: 'margin-bottom: 1.0725rem',
+                            wrapperStyle: `margin-bottom: 1.0725rem`,
                         },
                     },
-                    'gatsby-remark-lazy-load',
-                    'gatsby-remark-prismjs',
-                    'gatsby-remark-copy-linked-files',
-                    'gatsby-remark-smartypants',
+                    `gatsby-remark-lazy-load`,
+                    `gatsby-remark-prismjs`,
+                    `gatsby-remark-copy-linked-files`,
+                    `gatsby-remark-smartypants`,
                 ],
             },
         },
-        'gatsby-transformer-sharp',
-        'gatsby-plugin-sharp',
+        `gatsby-transformer-sharp`,
+        `gatsby-plugin-sharp`,
         {
-            resolve: 'gatsby-plugin-google-analytics',
+            resolve: `gatsby-plugin-google-analytics`,
             options: {
                 trackingId: process.env.GA_ID,
             },
         },
-        'gatsby-plugin-feed',
+        `gatsby-plugin-feed`,
         {
-            resolve: 'gatsby-plugin-manifest',
+            resolve: `gatsby-plugin-manifest`,
             options: {
-                name: 'Freddy Montes Frontend Developer',
-                short_name: 'fmontes',
-                start_url: '/',
-                background_color: '#ffffff',
-                theme_color: '#663399',
-                display: 'minimal-ui',
-                icon: 'content/assets/fmontes-icon.png',
+                name: `Freddy Montes Frontend Developer`,
+                short_name: `fmontes`,
+                start_url: `/`,
+                background_color: `#ffffff`,
+                theme_color: `#663399`,
+                display: `minimal-ui`,
+                icon: `content/assets/fmontes-icon.png`,
             },
         },
-        'gatsby-plugin-offline',
-        'gatsby-plugin-react-helmet',
+        `gatsby-plugin-react-helmet`,
         {
-            resolve: 'gatsby-plugin-typography',
+            resolve: `gatsby-plugin-typography`,
             options: {
-                pathToConfigModule: 'src/utils/typography',
+                pathToConfigModule: `src/utils/typography`,
             },
         },
         {
-            resolve: 'gatsby-plugin-react-svg',
+            resolve: `gatsby-plugin-react-svg`,
             options: {
                 rule: {
                     include: /src\/assets/,
@@ -130,5 +123,6 @@ module.exports = {
                 `,
             },
         },
+        `gatsby-plugin-offline`
     ],
 }
