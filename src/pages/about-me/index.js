@@ -26,7 +26,7 @@ export default function AboutMeIndex({ data, location }) {
 
             <blockquote>Code, Design, Learn and Teach.</blockquote>
 
-            <p>Frontend is my true passion and I really enjoy the whole process of creating UIs, from the first brainstorming, wireframes, mockups, design, all the way until the final product.</p>
+            <p>Frontend is my true passion and I really enjoy the whole process of creating UIs. From the first brainstorming, wireframes, mockups, design, all the way until the final product.</p>
 
             <h3>Want to build something?</h3>
             <p>If you want to work with me just <a href="mailto:me@fmontes.com?subject=Hello from your website">shoot me an email</a> and I'll be ready to make it happen.</p>
