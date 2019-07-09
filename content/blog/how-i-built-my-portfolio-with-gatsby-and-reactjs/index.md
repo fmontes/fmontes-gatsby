@@ -18,7 +18,7 @@ You only need two commands:
 
 ```shell
 npm install -g gatsby-cli
-gatsby new my-blog-starter https://github.com/gatsbyjs/gatsby-starter-blog.
+gatsby new site-name https://github.com/gatsbyjs/gatsby-starter-blog
 ```
 
 With Gatsby you can startup a site in no time. Since it has the concept of [starters](https://www.gatsbyjs.org/starters/) you can pick from hundreds the one that matches your project, in my case it was [gatsby-starter-blog](https://www.gatsbyjs.org/starters/gatsbyjs/gatsby-starter-blog/).
