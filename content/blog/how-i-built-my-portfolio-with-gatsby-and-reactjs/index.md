@@ -4,7 +4,7 @@ date: '2019-07-09T07:23:03.284Z'
 description: 'I needed a blazing fast site for my blog portfolio so I built it with Gatsby, ReactJS and hosted in Netlify. 🚀'
 ---
 
-My personal site needs some love for a while now, the last commit on it was on Apr 3, 2016. So I need a new site and I need it fast and that's exactly where Gatsby helps me.
+My personal site needs some love for a while now, [the last commit on it was on Apr 3, 2016](https://github.com/fmontes/fmontes/commit/23fd6abd645d9afb67497528c933672c9624431a). So I need a new site and I need it fast and that's exactly where Gatsby helps me.
 
 ## What I want
 1. Blazing fast site
