@@ -36,7 +36,7 @@ This starter has some important plugins installed, so out of the box I got:
 7. [Vertical rhythm typography](https://www.gatsbyjs.org/docs/typography-js/)
 8. [prismjs](https://prismjs.com/) for code syntax highlight
 
-## What I add
+## What I added
 1. [Styled components](https://www.gatsbyjs.org/docs/styled-components/)
 2. Lazy load image inside markdown files with [gatsby-remark-lazy-load](https://www.gatsbyjs.org/packages/gatsby-remark-lazy-load/) and [lazines](https://www.npmjs.com/package/lazysizes) **(this is a must for performance)**.
 99. Github Repo Showcase with [gatsby-source-github-api](https://www.gatsbyjs.org/packages/gatsby-source-github-api) and this GraphQL Query:
