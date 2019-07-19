@@ -13,6 +13,7 @@ module.exports = {
         },
     },
     plugins: [
+        `gatsby-plugin-sitemap`,
         `gatsby-plugin-styled-components`,
         {
             resolve: `gatsby-source-filesystem`,
