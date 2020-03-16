@@ -7,6 +7,8 @@ import SASS from '../../../assets/tech-logos/sass.svg'
 import Angular from '../../../assets/tech-logos/angular.svg'
 import RxJS from '../../../assets/tech-logos/rxjs.svg'
 import Dragula from '../../../assets/tech-logos/dragula.svg'
+import Gatsby from '../../../assets/tech-logos/gatsby.svg'
+import ReactJS from '../../../assets/tech-logos/reactjs.svg'
 
 let { fontSize, lineHeight } = scale(1)
 
@@ -59,6 +61,8 @@ const logos = {
     Angular,
     RxJS,
     Dragula,
+    Gatsby,
+    ReactJS
 }
 
 function Fallback({ item }) {
