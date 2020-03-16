@@ -37,6 +37,10 @@ We need a form for our users can submit information, we use [Formspark](https://
 4. Easy to update and deploy
 
 ### Results
-We deliver the first version of the new edit mode feature within months and with the release to the public, we start gathering a lot of good feedback and ideas for a future version.
+Now we have a pretty short and nice website that we can submit to potential clients and we're working on improve our positioning in search engines.
 
-Edit mode becomes the feature that differentiates DotCMS from any other competitor in the market and the main selling point for the product.
+### Next Steps
+1. Multilanguage
+2. Add some products
+3. Add social media links
+4. Add more services
