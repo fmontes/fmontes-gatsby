@@ -18,6 +18,13 @@ We are not the typical convenience store, we are focus in a very specific target
 ![La Pulpe - Minimarket](./pulpe-mobile.png)
 
 ### Solution
+We create a landing page where we explain exactly what we do and why are the best in doing it.
+
+1. **Tagline:** super important, we have to explain what we do in a few words.
+2. **Benefits:** explaning why companies needs to provide snacks to their employees.
+3. **About us:** we build stores to suit you and how we do it.
+4. **Testimonials:** our current customers talked about their experiences.
+5. **Contact form:** a way to catch leads.
 
 #### Performance
 We need the page to load as fast a possible. Gatsby is a excelent option for static web sites. 
