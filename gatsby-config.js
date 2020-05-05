@@ -3,7 +3,7 @@ module.exports = {
         title: `Frontend Javascript Developer`,
         author: `Freddy Montes`,
         description: `Frontend Developer with a graphic design degree. UX/UI and Javascript crafter.`,
-        siteUrl: `https://fmontes/`,
+        siteUrl: `https://fmontes.com/`,
         social: {
             github: `//github.com/fmontes/`,
             instagram: `//instagram.com/fmontes`,
