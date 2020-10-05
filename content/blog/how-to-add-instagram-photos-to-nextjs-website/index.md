@@ -5,7 +5,7 @@ description: 'Instagram is a great way to connect with your audience and build u
 tags: nextjs, instagram, react
 ---
 
-Showing your Instagram Photos in your website (or your client's) allows yout to funnel some traffic from your webapp to your Instagram Account and visa versa. Instagram is a great way to connect with your audience and build up your online brand.
+Showing your Instagram Photos in your website (or your client's) allows your to funnel some traffic from your webapp to your Instagram Account and visa versa. Instagram is a great way to connect with your audience and build up your online brand.
 
 In this post I will show you an example on how to show your last Instagram Posts in your NextJS webapp.
 
