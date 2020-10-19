@@ -10,14 +10,12 @@ class Instagram extends React.Component {
     render() {
         const { data } = this.props
         const posts = data.allInstagram.edges
-        console.log(posts)
 
         return (
             <Layout location={this.props.location}>
                 <SEO title="Post from Instagram" />
                 <PageTitle>Post from Instagram</PageTitle>
                 {posts.map(({ node }, i) => {
-                    console.log(node.slug)
                     const date = new Date(node.taken_at_timestamp * 1000).toLocaleDateString(
                         'en-US',
                         {
