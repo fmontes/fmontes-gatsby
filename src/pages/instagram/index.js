@@ -27,7 +27,7 @@ class Instagram extends React.Component {
                     const post = {
                         title: node.title,
                         slug: `/instagram/${node.slug}`,
-                        description: node.caption[0],
+                        description: `${node.caption[0].split(' ').slice(0,24).join(' ')}...`,
                         date: date,
                     }
                     return <BlogItem item={post} key={i} />
