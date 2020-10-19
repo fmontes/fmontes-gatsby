@@ -72,3 +72,5 @@ yarn-error.log
 
 #editors
 .vscode
+
+cookies.json

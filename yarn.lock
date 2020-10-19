@@ -15465,6 +15465,13 @@ toposort@^2.0.2:
   resolved "https://registry.yarnpkg.com/toposort/-/toposort-2.0.2.tgz#ae21768175d1559d48bef35420b2f4962f09c330"
   integrity sha1-riF2gXXRVZ1IvvNUILL0li8JwzA=
 
+tough-cookie-filestore2@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/tough-cookie-filestore2/-/tough-cookie-filestore2-1.0.0.tgz#c82848c5234c50b87bb16572f89a89863b84f32a"
+  integrity sha512-2/p7yiS7CBura7JzfCO72iuWNRbB2ot/Hz4VtiP6qcrgvYXUbeiyEUf6fz8i9gWvzOad83gOUCtg5PtLpErZug==
+  dependencies:
+    tough-cookie "^2.3.3"
+
 tough-cookie@^2.3.3, tough-cookie@~2.5.0:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/tough-cookie/-/tough-cookie-2.5.0.tgz#cd9fb2a0aa1d5a12b473bd9fb96fa3dcff65ade2"

@@ -37,6 +37,7 @@
         "react-helmet": "^5.2.1",
         "react-typography": "^0.16.19",
         "styled-components": "^4.3.2",
+        "tough-cookie-filestore2": "^1.0.0",
         "typeface-inconsolata": "^0.0.72",
         "typeface-ubuntu": "^0.0.65",
         "typography": "^0.16.19"

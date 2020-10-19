@@ -1,21 +1,15 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
-import { rhythm, scale } from '../../utils/typography'
 import styled from 'styled-components'
+
+import { rhythm } from '../../utils/typography'
 
 import Layout from '../../components/Layout'
 import SEO from '../../components/Seo'
 import Separator from '../../components/Separator'
+import DateStyled from '../../styles/Date.styles'
 
-const { fontSize, lineHeight } = scale(-1 / 5)
 
-const Date = styled.p`
-    display: block;
-    font-size: ${fontSize};
-    line-height: ${lineHeight};
-    margin-bottom: ${rhythm(1)};
-    margin-top: ${rhythm(-1)};
-`
 
 const PaginationList = styled.ul`
     display: flex;
@@ -44,7 +38,7 @@ class BlogPostTemplate extends React.Component {
                     description={post.frontmatter.description || post.excerpt}
                 />
                 <h1>{post.frontmatter.title}</h1>
-                <Date>{post.frontmatter.date}</Date>
+                <DateStyled>{post.frontmatter.date}</DateStyled>
                 <div className="post__content" dangerouslySetInnerHTML={{ __html: post.html }} />
                 <Separator />
 

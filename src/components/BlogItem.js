@@ -7,17 +7,16 @@ const BlogTitle = styled.h3`
     margin-bottom: ${rhythm(1 / 4)};
 `
 
-export default function BlogItem({ item }) {
-    const title = item.frontmatter.title || item.fields.slug
+export default function BlogItem({ item: { title, slug, date, description } }) {
     return (
         <article>
             <BlogTitle>
-                <Link to={item.fields.slug}>{title}</Link>
+                <Link to={slug}>{title}</Link>
             </BlogTitle>
-            <time>{item.frontmatter.date}</time>
+            <time>{date}</time>
             <p
                 dangerouslySetInnerHTML={{
-                    __html: item.frontmatter.description || item.excerpt,
+                    __html: description,
                 }}
             />
         </article>

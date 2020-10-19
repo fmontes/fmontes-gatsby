@@ -15,9 +15,15 @@ class BlogIndex extends React.Component {
             <Layout location={this.props.location}>
                 <SEO title="Blog" />
                 <PageTitle>Recent Blog Posts</PageTitle>
-                {posts.map(({ node }, i) => (
-                    <BlogItem item={node} key={i} />
-                ))}
+                {posts.map(({ node }, i) => {
+                    const post = {
+                        title: node.frontmatter.title,
+                        slug: node.fields.slug,
+                        description: node.frontmatter.description || node.excerpt,
+                        date: node.frontmatter.date,
+                    }
+                    return <BlogItem item={post} key={i} />
+                })}
             </Layout>
         )
     }

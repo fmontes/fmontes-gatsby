@@ -17,6 +17,7 @@ module.exports = {
         },
     },
     plugins: [
+        `gatsby-instagram-source`,
         `gatsby-plugin-sitemap`,
         `gatsby-plugin-styled-components`,
         {
