@@ -16,7 +16,7 @@ const typography = new Typography({
     color: {
         primary: '#156D81',
         secondary: '#F4E060',
-        border: gray(90)
+        border: gray(90),
     },
     overrideStyles: ({ adjustFontSizeTo, scale, rhythm }, options) => ({
         a: {
@@ -28,9 +28,12 @@ const typography = new Typography({
             color: options.bodyColor,
             boxShadow: `0 1px ${options.bodyColor}`,
         },
-        'h1,h2,h3,h4,h5,h6': {
+        'h1,h2,h3': {
             marginTop: rhythm(2),
             letterSpacing: '-0.025em',
+        },
+        'h4,h5,h6': {
+            marginTop: rhythm(1),
         },
         blockquote: {
             ...scale(1 / 5),
@@ -57,16 +60,16 @@ const typography = new Typography({
         '.gatsby-highlight': {
             marginBottom: `${rhythm(1)}`,
         },
-        '.post__content code[class*="language-"], .post__content code[class*="language-"]': {
+        '.post__content .gatsby-highlight code[class*="language-"], .post__content .gatsby-highlight code[class*="language-"], .post__content p code[class*="language-"], .post__content p code[class*="language-"], .post__content li code[class*="language-"], .post__content li code[class*="language-"]': {
             fontSize: '0.75rem',
         },
-        '.post__content pre[class*="language-"]::before, .post__content pre[class*="language-"]::after': {
+        '.post__content .gatsby-highlight pre[class*="language-"]::before, .post__content .gatsby-highlight pre[class*="language-"]::after': {
             display: 'none',
         },
-        '.post__content pre[class*="language-"] > code': {
+        '.post__content .gatsby-highlight pre[class*="language-"] > code': {
             borderColor: options.color.primary,
-            borderWidth: '5px'
-        }
+            borderWidth: '5px',
+        },
     }),
 })
 

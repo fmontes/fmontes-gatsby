@@ -33,11 +33,18 @@ exports.sourceNodes = async ({ actions, createNodeId, createContentDigest }) => 
     await client.login()
 
     const ig = await client
-        .getPhotosByUsername({ username: 'fmontes' })
+        .getPhotosByUsername({ username: 'fmontes', first: 24 })
         .then(({ user: { edge_owner_to_timeline_media } }) => edge_owner_to_timeline_media.edges)
 
-    ig.map(post => {
-        const [title, ...caption] = post.node.edge_media_to_caption.edges[0].node.text.split('—')
+    ig.map((post) => {
+        const text = post.node.edge_media_to_caption.edges[0].node.text
+
+        const [title, ...caption] =
+            text.split('—').length > 1
+                ? text.split('—').filter(Boolean)
+                : text.split('\n').filter(Boolean)
+
+        console.log(caption[0])
 
         return {
             title,
@@ -48,19 +55,21 @@ exports.sourceNodes = async ({ actions, createNodeId, createContentDigest }) => 
             edge_media_preview_like: post.node.edge_media_preview_like,
             display_resources: post.node.display_resources,
         }
-    }).forEach((post) => {
-        const nodeMeta = {
-            id: createNodeId(`ig-${post.shortcode}`),
-            parent: null,
-            children: [],
-            internal: {
-                type: `Instagram`,
-                mediaType: `text/json`,
-                content: JSON.stringify(post),
-                contentDigest: createContentDigest(post),
-            },
-        }
-        const node = Object.assign({}, post, nodeMeta)
-        createNode(node)
     })
+        .filter(Boolean)
+        .forEach((post) => {
+            const nodeMeta = {
+                id: createNodeId(`ig-${post.shortcode}`),
+                parent: null,
+                children: [],
+                internal: {
+                    type: `Instagram`,
+                    mediaType: `text/json`,
+                    content: JSON.stringify(post),
+                    contentDigest: createContentDigest(post),
+                },
+            }
+            const node = Object.assign({}, post, nodeMeta)
+            createNode(node)
+        })
 }
