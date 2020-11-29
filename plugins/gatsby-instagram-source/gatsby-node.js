@@ -47,6 +47,14 @@ exports.sourceNodes = async ({ actions, createNodeId, createContentDigest }) => 
         return {
             title,
             caption,
+            description: `${
+                caption[0]
+                    ? caption[0]
+                          .split(' ')
+                          .slice(0, 24)
+                          .join(' ')
+                    : ''
+            }...`,
             slug: string_to_slug(title),
             taken_at_timestamp: post.node.taken_at_timestamp,
             shortcode: post.node.shortcode,

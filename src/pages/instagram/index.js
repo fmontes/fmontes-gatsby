@@ -27,7 +27,7 @@ class Instagram extends React.Component {
                     const post = {
                         title: node.title,
                         slug: `/instagram/${node.slug}`,
-                        description: `${node.caption[0].split(' ').slice(0,24).join(' ')}...`,
+                        description: node.description,
                         date: date,
                     }
                     return <BlogItem item={post} key={i} />
@@ -47,6 +47,7 @@ export const instagramQuery = graphql`
                     taken_at_timestamp
                     shortcode
                     caption
+                    description
                     title
                     slug
                     display_resources {
