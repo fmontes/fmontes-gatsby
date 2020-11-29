@@ -1,5 +1,5 @@
-require("dotenv").config({
-  path: `.env.${process.env.NODE_ENV}`,
+require('dotenv').config({
+    path: `.env.${process.env.NODE_ENV}`,
 })
 
 module.exports = {
@@ -43,7 +43,7 @@ module.exports = {
                         options: {
                             maxWidth: 660,
                             quality: 70,
-                            withWebp: true
+                            withWebp: true,
                         },
                     },
                     {
@@ -52,6 +52,7 @@ module.exports = {
                             wrapperStyle: `margin-bottom: 1.0725rem`,
                         },
                     },
+                    `gatsby-remark-heading-slug`,
                     `gatsby-remark-lazy-load`,
                     `gatsby-remark-prismjs`,
                     `gatsby-remark-copy-linked-files`,
@@ -131,6 +132,6 @@ module.exports = {
                 `,
             },
         },
-        `gatsby-plugin-offline`
+        `gatsby-plugin-offline`,
     ],
 }

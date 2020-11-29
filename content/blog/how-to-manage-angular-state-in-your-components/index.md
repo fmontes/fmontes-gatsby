@@ -9,13 +9,36 @@ Managing the state of your Angular application has always been a challenge.
 
 In this tutorial, I will explain how to manage your components' state with `@ngrx/component-store`. You will be able to do it in a more organized way and minimizing bugs and UI inconsistencies.
 
-### Prerequisites
+### Table of content
+- [Prerequisites](#prerequisites)
+- [What are we going to build?](#what-are-we-going-to-build-)
+- [What is the "state"?](#what-is-the--state--)
+- [Not all Angular apps need NGRX or NGSX](#not-all-angular-apps-need-ngrx-or-ngsx)
+- [The problem](#the-problem)
+- [The solution: @ngrx/component-store](#the-solution---ngrx-component-store)
+  * [When to use an @ngrx/store or @ngrx/component-store?](#when-to-use-an--ngrx-store-or--ngrx-component-store-)
+  * [My recommendation](#my-recommendation)
+  * [@ngrx/component-store concepts](#-ngrx-component-store-concepts)
+- [Getting started](#getting-started)
+  * [Initializing the application](#initializing-the-application)
+  * [Creating utilities](#creating-utilities)
+  * [Defining the state](#defining-the-state)
+  * [Install @ngrx/component-store](#install--ngrx-component-store)
+  * [Creating the store service](#creating-the-store-service)
+  * [Creating the car-list component](#creating-the-car-list-component)
+  * [Adding the FormModule](#adding-the--formmodule-)
+  * [Consuming the store service](#consuming-the-store-service)
+  * [That's it](#that-s-it)
+  * [Summary](#summary)
+  * [Conclusion](#conclusion)
+
+## Prerequisites
 
 1. Basic knowledge of Angular
 2. Basic knowledge of RXJS
 3. [angular-cli](https://cli.angular.io/) installed or [Stackblitz](https://stackblitz.com/) account
 
-### What are we going to build?
+## What are we going to build?
 
 An application to manage car parking and will have the following parts:
 
@@ -24,9 +47,9 @@ An application to manage car parking and will have the following parts:
 3. `app.component`: Parent component. We consume the state and add cars to the parking lot
 4. `car-list.component`: To show the list of parked cars
 
-If you wish, you can jump to [source code](https://stackblitz.com/edit/angular-component-store-tutorial), without obligation 🤓.
+If you wish, you can jump to [source code](https://stackblitz.com/edit/angular-component-store-tutorial), without obligation 🤓 or directly to the [tutorial](#getting-started).
 
-### What is the "state"?
+## What is the "state"?
 
 It is the **representation of your UI** using an object, and it could be modified in different ways, for example:
 
@@ -35,7 +58,7 @@ It is the **representation of your UI** using an object, and it could be modifie
 -   Changes in the router
 -   Among others
 
-#### Example:
+### Example:
 
 ```typescript
 state = {
@@ -51,14 +74,14 @@ state = {
 
 > Almost all components have a state. We handle them indirectly by using properties and changing them during their life cycle.
 
-#### In short a state is:
+### In short a state is:
 
 1. It is an object that represents the view of your component
 2. **It is not the data that comes from the server**, in fact, this may be part of it
 3. It can have as many levels as you need
 4. **It is immutable**. When we need to update a property, we don't change it directly but create a new object with the modified property.
 
-### Not all Angular apps need NGRX or NGSX
+## Not all Angular apps need NGRX or NGSX
 
 Most Angular **applications do not need a full-blown state management system**. It is best to manage the state at the component level before implementing a more complex app-level solution like NGRX or NGSX.
 
@@ -66,7 +89,7 @@ Most Angular **applications do not need a full-blown state management system**. 
 
 [Tweet Link](https://twitter.com/fmontes/status/1325430712816840705)
 
-### The problem
+## The problem
 
 The most popular approach to managing state in Angular is to use NGRX or NGSX, both of which derive from the **Redux architecture** created by Facebook for React.
 
@@ -74,7 +97,7 @@ Due to this architecture's design, you have to touch 3 or 4 files to make a basi
 
 It has concepts that, at first glance, are a bit complicated to understand: reducers, actions, selectors, effects, which tend to intimidate even the most experienced developer.
 
-### The solution: @ngrx/component-store
+## The solution: @ngrx/component-store
 
 The same NGRX team developed [@ngrx/component-store](https://ngrx.io/guide/component-store). A service based on `BehaviorSubject` can extend to a service and be consumed by a component.
 
@@ -282,7 +305,7 @@ To add `@ngrx/component-store` to your app use `npm`:
 npm install @ngrx/component-store --save
 ```
 
-### Creating the service
+### Creating the store service
 
 Create the file: `app/store.service.ts` and add the following code:
 
@@ -610,7 +633,7 @@ import { FormsModule } from '@angular/forms'
 export class AppModule {}
 ```
 
-### Consuming the service
+### Consuming the store service
 
 You created the service specifically for the `app.component` and its children.
 
@@ -849,4 +872,4 @@ As you could see, it is better to start managing the state at the component leve
 
 A state is simply an object representing what your interface looks like, and using `@ngrx/component-store` and its three basic concepts: `select`,`update` and `effect`, you can handle it in a simple, direct, and more painless way test.
 
->   I hope this tutorial has been beneficial for you, and if you have any questions, you can write to me on [Twitter by @fmontes](https://twitter.com/fmontes).
+> I hope this tutorial has been beneficial for you, and if you have any questions, you can write to me on [Twitter by @fmontes](https://twitter.com/fmontes).

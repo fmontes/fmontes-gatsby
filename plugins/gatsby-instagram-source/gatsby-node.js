@@ -44,8 +44,6 @@ exports.sourceNodes = async ({ actions, createNodeId, createContentDigest }) => 
                 ? text.split('—').filter(Boolean)
                 : text.split('\n').filter(Boolean)
 
-        console.log(caption[0])
-
         return {
             title,
             caption,
