@@ -1,7 +1,7 @@
 ---
-title: How to manage angular state in your components
+title: How to manage Angular state in your components
 date: '2020-11-27T07:15:29.284Z'
-description: ''
+description: 'In this tutorial, I will explain how to manage your components state with @ngrx/component-store.'
 tags: angular
 ---
 
