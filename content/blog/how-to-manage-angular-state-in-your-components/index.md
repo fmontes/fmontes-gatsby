@@ -520,7 +520,7 @@ In this code, you can see that the `effect`:
 4. When the request is successful, update the state again: remove the loading and add the cart to the state.
 5. If it fails: remove the loading and update the state with the error coming from the "backend"
 
-Using `concatMap` so that if the `effect` is called multiple times before the call ends, it will resolve all the call, this operator will wait until the past request is done to do the next one.
+Using `concatMap` so that if the `effect` is called multiple times before the call ends, it will resolve all the calls, this operator will wait until the past request is done to do the next one.
 
 The `tap` operator to handle the case of success and error.
 
