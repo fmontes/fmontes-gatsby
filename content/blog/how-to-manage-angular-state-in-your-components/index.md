@@ -2,35 +2,40 @@
 title: How to manage Angular state in your components
 date: '2020-11-27T07:15:29.284Z'
 description: 'In this tutorial, I will explain how to manage your components state with @ngrx/component-store.'
-tags: angular
+tags: angular, javascript
 ---
+
+_Updated Dec 3, 2020_
+
+Thanks [@AlexOkrushko](https://twitter.com/AlexOkrushko) and [@Nartc1410](https://twitter.com/Nartc1410) for the great feedback.
 
 Managing the state of your Angular application has always been a challenge.
 
 In this tutorial, I will explain how to manage your components' state with `@ngrx/component-store`. You will be able to do it in a more organized way and minimizing bugs and UI inconsistencies.
 
 ### Table of content
-- [Prerequisites](#prerequisites)
-- [What are we going to build?](#what-are-we-going-to-build-)
-- [What is the "state"?](#what-is-the--state--)
-- [Not all Angular apps need NGRX or NGSX](#not-all-angular-apps-need-ngrx-or-ngsx)
-- [The problem](#the-problem)
-- [The solution: @ngrx/component-store](#the-solution---ngrx-component-store)
-  * [When to use an @ngrx/store or @ngrx/component-store?](#when-to-use-an--ngrx-store-or--ngrx-component-store-)
-  * [My recommendation](#my-recommendation)
-  * [@ngrx/component-store concepts](#-ngrx-component-store-concepts)
-- [Getting started](#getting-started)
-  * [Initializing the application](#initializing-the-application)
-  * [Creating utilities](#creating-utilities)
-  * [Defining the state](#defining-the-state)
-  * [Install @ngrx/component-store](#install--ngrx-component-store)
-  * [Creating the store service](#creating-the-store-service)
-  * [Creating the car-list component](#creating-the-car-list-component)
-  * [Adding the FormModule](#adding-the--formmodule-)
-  * [Consuming the store service](#consuming-the-store-service)
-  * [That's it](#that-s-it)
-  * [Summary](#summary)
-  * [Conclusion](#conclusion)
+
+-   [Prerequisites](#prerequisites)
+-   [What are we going to build?](#what-are-we-going-to-build-)
+-   [What is the "state"?](#what-is-the--state--)
+-   [Not all Angular apps need NgRx or NGSX](#not-all-angular-apps-need-ngrx-or-ngsx)
+-   [The problem](#the-problem)
+-   [The solution: @ngrx/component-store](#the-solution---ngrx-component-store)
+    -   [When to use an @ngrx/store or @ngrx/component-store?](#when-to-use-an--ngrx-store-or--ngrx-component-store-)
+    -   [My recommendation](#my-recommendation)
+    -   [@ngrx/component-store concepts](#-ngrx-component-store-concepts)
+-   [Getting started](#getting-started)
+    -   [Initializing the application](#initializing-the-application)
+    -   [Creating utilities](#creating-utilities)
+    -   [Defining the state](#defining-the-state)
+    -   [Install @ngrx/component-store](#install--ngrx-component-store)
+    -   [Creating the store service](#creating-the-store-service)
+    -   [Creating the car-list component](#creating-the-car-list-component)
+    -   [Adding the FormModule](#adding-the--formmodule-)
+    -   [Consuming the store service](#consuming-the-store-service)
+    -   [That's it](#that-s-it)
+    -   [Summary](#summary)
+    -   [Conclusion](#conclusion)
 
 ## Prerequisites
 
@@ -81,25 +86,25 @@ state = {
 3. It can have as many levels as you need
 4. **It is immutable**. When we need to update a property, we don't change it directly but create a new object with the modified property.
 
-## Not all Angular apps need NGRX or NGSX
+## Not all Angular apps need NgRx or NGSX
 
-Most Angular **applications do not need a full-blown state management system**. It is best to manage the state at the component level before implementing a more complex app-level solution like NGRX or NGSX.
+Most Angular **applications do not need a full-blown state management system**. It is best to manage the state at the component level before implementing a more complex app-level solution like NgRx or NGSX.
 
-![Not all Angular apps need NGRX or NGSX](001-tweet.png)
+![Not all Angular apps need NgRx or NGSX](001-tweet.png)
 
 [Tweet Link](https://twitter.com/fmontes/status/1325430712816840705)
 
 ## The problem
 
-The most popular approach to managing state in Angular is to use NGRX or NGSX, both of which derive from the **Redux architecture** created by Facebook for React.
+If you have a [smart component](https://blog.angular-university.io/angular-2-smart-components-vs-presentation-components-whats-the-difference-when-to-use-each-and-why/) with several child components, you probably have many properties in your parent component that you need to pass to the child components.
 
-Due to this architecture's design, you have to touch 3 or 4 files to make a basic change.
+For sure, your child's components emit events that will change the properties in its parent.
 
-It has concepts that, at first glance, are a bit complicated to understand: reducers, actions, selectors, effects, which tend to intimidate even the most experienced developer.
+Keep all these changes in order and under control can become a tedious task because the properties change in many places that can be hard to track, especially in async tasks.
 
 ## The solution: @ngrx/component-store
 
-The same NGRX team developed [@ngrx/component-store](https://ngrx.io/guide/component-store). A service based on `BehaviorSubject` can extend to a service and be consumed by a component.
+The same NgRx team developed [@ngrx/component-store](https://ngrx.io/guide/component-store). A service based on `ReplaySubject` can extend to a service and be consumed by a component.
 
 It allows the component (or components) not to handle all the business logic but only subscribes to the state when it is updated.
 
@@ -110,7 +115,7 @@ The service you create by extending **ComponentStore** will be dedicated to a pa
 In your application, you can use both. Both libraries complement each other.
 
 1. If the state **needs to persist** when you change the URL, that state goes in your **global** state
-2. If the state **dies** when you change the URL that goes in your **component store**
+2. If the state **needs to be clean up** when you change the URL that goes in your **component store**
 
 More information in [Comparison of ComponentStore and Store](https://ngrx.io/guide/component-store/comparison).
 
@@ -185,10 +190,10 @@ ng g service services/parking-lot
 Open the file `app/services/parking-lot.service.ts` and add the following:
 
 ```typescript
-import { Injectable } from '@angular/core';
-import { Observable, of, throwError } from 'rxjs';
-import { delay } from 'rxjs/operators';
-import { Car } from '../models/car';
+import { Injectable } from '@angular/core'
+import { Observable, of, throwError } from 'rxjs'
+import { delay } from 'rxjs/operators'
+import { Car } from '../models/car'
 
 const data: Car[] = [
     {
@@ -215,43 +220,43 @@ const data: Car[] = [
         model: 'Golf',
         color: 'Aquamarine',
     },
-];
+]
 
-const FAKE_DELAY = 600;
+const FAKE_DELAY = 600
 
 @Injectable({
     providedIn: 'root',
 })
 export class ParkingLotService {
-    private cars: Car[] = [];
+    private cars: Car[] = []
 
     constructor() {}
 
     add(plate: string): Observable<Car> {
         try {
-            const existingCar = this.cars.find((eCar: Car) => eCar.plate === plate);
+            const existingCar = this.cars.find((eCar: Car) => eCar.plate === plate)
 
             if (existingCar) {
-                throw `This car with plate ${plate} is already parked`;
+                throw `This car with plate ${plate} is already parked`
             }
 
-            const car = this.getCarByPlate(plate);
-            this.cars = [...this.cars, car];
+            const car = this.getCarByPlate(plate)
+            this.cars = [...this.cars, car]
 
-            return of(car).pipe(delay(FAKE_DELAY));
+            return of(car).pipe(delay(FAKE_DELAY))
         } catch (error) {
-            return throwError(error);
+            return throwError(error)
         }
     }
 
     private getCarByPlate(plate: string): Car {
-        const car = data.find((item: Car) => item.plate === plate);
+        const car = data.find((item: Car) => item.plate === plate)
 
         if (car) {
-            return car;
+            return car
         }
 
-        throw `The car with plate ${plate} is not register`;
+        throw `The car with plate ${plate} is not register`
     }
 }
 ```
@@ -343,19 +348,19 @@ This code is the base of your `StoreService`:
 Now you are going to add the rest of the code, **selects, updaters and effects**. Your service code would be:
 
 ```typescript
-import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core'
 
-import { ComponentStore } from '@ngrx/component-store';
-import { EMPTY, Observable } from 'rxjs';
-import { catchError, switchMap, tap } from 'rxjs/operators';
-import { Car } from './models/car';
-import { ParkingLotService } from './services/parking-lot.service';
+import { ComponentStore } from '@ngrx/component-store'
+import { EMPTY, Observable } from 'rxjs'
+import { catchError, concatMap, finalize, tap } from 'rxjs/operators'
+import { Car } from './models/car'
+import { ParkingLotService } from './services/parking-lot.service'
 
 // The state model
 interface ParkingState {
-    cars: Car[]; // render the table with cars
-    error: string; // show the error when try to add cars
-    loading: boolean; // used to enable/disable elements in the UI while fetching data
+    cars: Car[] // render the table with cars
+    error: string // show the error when try to add cars
+    loading: boolean // used to enable/disable elements in the UI while fetching data
 }
 
 @Injectable()
@@ -365,58 +370,53 @@ export class StoreService extends ComponentStore<ParkingState> {
             cars: [],
             error: '',
             loading: false,
-        });
+        })
     }
 
     // SELECTORS
-    readonly vm$: Observable<ParkingState> = this.select((state) => state);
+    readonly vm$: Observable<ParkingState> = this.select((state) => state)
 
     // UPDATERS
     readonly updateError = this.updater((state: ParkingState, error: string) => {
         return {
             ...state,
             error,
-        };
-    });
+        }
+    })
 
     readonly setLoading = this.updater((state: ParkingState, loading: boolean) => {
         return {
             ...state,
             loading,
-        };
-    });
+        }
+    })
 
     readonly updateCars = this.updater((state: ParkingState, car: Car) => {
         return {
             ...state,
             error: '',
             cars: [...state.cars, car],
-        };
-    });
+        }
+    })
 
     // EFFECTS
-    readonly addCarToParkingLot = this.effect((plate$: Observable<string>) => {
+    readonly  = this.effect((plate$: Observable<string>) => {
         return plate$.pipe(
-            switchMap((plate: string) => {
-                this.setLoading(true);
+            concatMap((plate: string) => {
+                this.setLoading(true)
                 return this.parkingLotService.add(plate).pipe(
                     tap({
-                        next: (car) => {
-                            this.setLoading(false);
-                            return this.updateCars(car);
-                        },
-                        error: (e) => {
-                            {
-                                this.setLoading(false);
-                                return this.updateError(e);
-                            }
-                        },
+                        next: (car) => this.updateCars(car),
+                        error: (e) => this.updateError(e),
+                    }),
+                    finalize(() => {
+                        this.setLoading(false)
                     }),
                     catchError(() => EMPTY)
-                );
+                )
             })
-        );
-    });
+        )
+    })
 }
 ```
 
@@ -471,6 +471,7 @@ The `updateError` receives the error message, and use the [spread operator](http
 The `setLoading` works the same as the previous one but with the `loading` property.
 
 ##### Add cars to parking
+
 This updater receive a car and just add it to the cars array using the spread operator.
 
 ```typescript
@@ -494,20 +495,15 @@ We use the `effect` method that receives a callback with the value that we pass 
 ```typescript
 readonly addCarToParkingLot = this.effect((plate$: Observable<string>) => {
     return plate$.pipe(
-        switchMap((plate: string) => {
+        concatMap((plate: string) => {
             this.setLoading(true);
             return this.parkingLotService.add(plate).pipe(
                 tap({
-                    next: car => {
-                        this.setLoading(false);
-                        return this.updateCars(car);
-                    },
-                    error: e => {
-                        {
-                        this.setLoading(false);
-                        return this.updateError(e);
-                        }
-                    }
+                    next: car => this.updateCars(car),
+                    error: e => this.updateError(e)
+                }),
+                finalize(() => {
+                    this.setLoading(false);
                 }),
                 catchError(() => EMPTY)
             );
@@ -524,7 +520,7 @@ In this code, you can see that the `effect`:
 4. When the request is successful, update the state again: remove the loading and add the cart to the state.
 5. If it fails: remove the loading and update the state with the error coming from the "backend"
 
-Using `switchMap` so that if the `effect` is called multiple times before the call ends, the previous request is always canceled, and it is done with the most recent value received.
+Using `concatMap` so that if the `effect` is called multiple times before the call ends, it will resolve all the call, this operator will wait until the past request is done to do the next one.
 
 The `tap` operator to handle the case of success and error.
 
@@ -856,6 +852,7 @@ body {
 ```
 
 ### That's it
+
 Go to your browser: [https://localhost:4200](https://localhost:4200) and see your app working.
 
 ### Summary
