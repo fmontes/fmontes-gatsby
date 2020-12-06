@@ -56,7 +56,7 @@ If you wish, you can jump to [source code](https://stackblitz.com/edit/angular-c
 
 ## What is the "state"?
 
-It is the **representation of your UI** using an object, and it could be modified in different ways, for example:
+It is the **representation of your UI** using an object, and we could change it in different ways, for example:
 
 -   Networks request
 -   User events
@@ -74,7 +74,7 @@ state = {
 ```
 
 1. List of cars in the parking lot: `cars: []`
-2. To modify the UI of our app while doing an operation that takes time to resolve, for example, a network request: `loading: true`
+2. To change the UI of our app while doing an operation that takes time to resolve, for example, a network request: `loading: true`
 3. To show errors that may occur during the execution of the application: `error: ''`
 
 > Almost all components have a state. We handle them indirectly by using properties and changing them during their life cycle.
@@ -84,11 +84,11 @@ state = {
 1. It is an object that represents the view of your component
 2. **It is not the data that comes from the server**, in fact, this may be part of it
 3. It can have as many levels as you need
-4. **It is immutable**. When we need to update a property, we don't change it directly but create a new object with the modified property.
+4. **It is immutable**. When you need to update a property, you don’t change it directly but create a new object with the modified property.
 
 ## Not all Angular apps need NgRx or NGSX
 
-Most Angular **applications do not need a full-blown state management system**. It is best to manage the state at the component level before implementing a more complex app-level solution like NgRx or NGSX.
+Most Angular applications **do not need a full-blown state management system**. It is best to manage the state at the component level before implementing a more complex app-level solution like NgRx or NGSX.
 
 ![Not all Angular apps need NgRx or NGSX](001-tweet.png)
 
@@ -98,17 +98,18 @@ Most Angular **applications do not need a full-blown state management system**. 
 
 If you have a [smart component](https://blog.angular-university.io/angular-2-smart-components-vs-presentation-components-whats-the-difference-when-to-use-each-and-why/) with several child components, you probably have many properties in your parent component that you need to pass to the child components.
 
-For sure, your child's components emit events that will change the properties in its parent.
+For sure, your child’s components emit events that will change the properties in its parent.
 
 Keep all these changes in order and under control can become a tedious task because the properties change in many places that can be hard to track, especially in async tasks.
+
 
 ## The solution: @ngrx/component-store
 
 The same NgRx team developed [@ngrx/component-store](https://ngrx.io/guide/component-store). A service based on `ReplaySubject` can extend to a service and be consumed by a component.
 
-It allows the component (or components) not to handle all the business logic but only subscribes to the state when it is updated.
+It allows you to keep all the business logic outside the component (or components) and only subscribes to the state and updates the UI when it changes.
 
-The service you create by extending **ComponentStore** will be dedicated to a particular component and its children. It is even injected directly into the component's `providers` property.
+The service you create by extending **ComponentStore** is unique to a particular component and its children and should be injected directly into the component’s `providers` property.
 
 ### When to use an @ngrx/store or @ngrx/component-store?
 
@@ -145,7 +146,7 @@ The application will have a UI with three sections:
 
 ### Initializing the application
 
-The first step is to create a new Angular application. With [angular-cli](https://cli.angular.io/). Open a terminal run the command:
+The first step is to create a new Angular application. With [angular-cli](https://cli.angular.io/). Open a terminal, run the command:
 
 ```shell
 ng new parking-lot-app
@@ -158,17 +159,17 @@ cd parking-lot-app
 ng serve
 ```
 
-Then point your browser to [http://localhost:4200/](http://localhost: 4200/), and you will be able to see your Angular application running with all the information by default.
+Then point your browser to [http://localhost:4200/](http://localhost: 4200/), and you will see your Angular application running with all the information by default.
 
 ### Creating utilities
 
-This first thing you are going to create is the **"Car" interface**. You run the command:
+The first thing you are going to create is the  **"Car" interface**. You run the command:
 
 ```shell
 ng g interface models/car
 ```
 
-Open the file `app/models/car.ts` and add the following:
+Open the file `app/models/car.ts` and add:
 
 ```typescript
 export interface Car {
@@ -179,7 +180,7 @@ export interface Car {
 }
 ```
 
-This is the very basic model of the car.
+The above is the very basic model of the car.
 
 Then **you create a service** that will communicate with the "backend" (only for the demo). You run the command:
 
@@ -187,7 +188,7 @@ Then **you create a service** that will communicate with the "backend" (only for
 ng g service services/parking-lot
 ```
 
-Open the file `app/services/parking-lot.service.ts` and add the following:
+Open the file `app/services/parking-lot.service.ts` and add:
 
 ```typescript
 import { Injectable } from '@angular/core'
@@ -261,7 +262,7 @@ export class ParkingLotService {
 }
 ```
 
-`data`: A list of the cars registered in our system. It will act as our car database for the demo.
+`data`: A list of the cars registered in our system. It will act as your car database for the demo.
 
 `FAKE_DELAY`: To simulate a small delay to the API request using the`delay` operator from `rxjs`
 
@@ -273,13 +274,13 @@ export class ParkingLotService {
 
 **Properties:**
 
-`car`: To keep track of the cars parked in the "backend."
+`car`: To keep track of the cars parked in the "backend".
 
 ### Defining the state
 
-To define the state, let's see the application requirements:
+To define the state, let’s see the application requirements:
 
-1. Vehicles are added by license plate (a request to an API)
+1. User will add cars by license plate (a request to an API)
 2. You must indicate to the user the errors:
     - The vehicle plate does not exist in the API
     - The vehicle is already parked
@@ -420,7 +421,7 @@ export class StoreService extends ComponentStore<ParkingState> {
 }
 ```
 
-It's quite a bit of code, so I'm going to explain to you in parts and starting with the selectors.
+It’s quite a bit of code, so I will explain it to you in parts and start with the selectors.
 
 #### Selectors
 
@@ -430,13 +431,13 @@ To create a selector, the `select` method is used as follows:
 readonly vm$: Observable<ParkingState> = this.select(state => state);
 ```
 
-The `select` method expects a function which in turn receives the full state. With this state, we can return to the components what is needed; in this case, the entire state is returned.
+The `select` method expects a function that receives the full state. With this state, we can return to the components what is needed; in this case, it returns the entire state.
 
 In this app, you need a selector, but you can have more than one.
 
 #### Updaters
 
-To update the state you will need three updaters:
+To update the state, you will need three updaters:
 
 1. To add or remove the error message
 2. To update the loading
@@ -444,7 +445,7 @@ To update the state you will need three updaters:
 
 To create updaters, use the `update` method provided by the `ComponentStore` class.
 
-The method receives a also a function with two parameters, the first is the current state, and the second is the payload that is sent from the component used to update the state. This method only has to return the new state.
+The method receives a function with two parameters, the first is the current state, and the second is the payload the component sent to update the state. This method only has to return the new state.
 
 ##### Error y loading
 
@@ -466,13 +467,13 @@ readonly setLoading = this.updater(
 );
 ```
 
-The `updateError` receives the error message, and use the [spread operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax) to combine with the old state and return the new state.
+The `updateError` receives the error message and use the [spread operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax) to combine with the old state and return the new state.
 
 The `setLoading` works the same as the previous one but with the `loading` property.
 
 ##### Add cars to parking
 
-This updater receive a car and just add it to the cars array using the spread operator.
+This updater receives a car and just adds it to the cars array using the spread operator.
 
 ```typescript
 readonly updateCars = this.updater((state: ParkingState, car: Car) => {
@@ -484,13 +485,13 @@ readonly updateCars = this.updater((state: ParkingState, car: Car) => {
 });
 ```
 
-**IMPORTANT**: When you update the state, the object is not being mutated (changing some property directly), but a new object is always returned.
+**IMPORTANT**: When you update the state, you don't mutate the object (changing some property directly) but return a new object always.
 
 #### Effects
 
-To add a car to the parking lot, you have to create an `effect` because you have to make a request to an API with the car's license plate, and when it responds, the state is updated.
+To add a car to the parking lot, you have to create an `effect` because you have to make a request to an API with the car’s license plate, and when it responds, the state is updated.
 
-We use the `effect` method that receives a callback with the value that we pass **as an Observable** to create effects. Keep in mind that each new call of the effect would push the value into that Observable.
+We use the `effect` method that receives a callback with the value that we pass as an **Observable** to create effects. Keep in mind that each new call of the effect would push the value into that Observable.
 
 ```typescript
 readonly addCarToParkingLot = this.effect((plate$: Observable<string>) => {
@@ -518,9 +519,9 @@ In this code, you can see that the `effect`:
 2. Update the state of `loading`
 3. Request the API to add the car to the parking lot using the `ParkingLotService`.
 4. When the request is successful, update the state again: remove the loading and add the cart to the state.
-5. If it fails: remove the loading and update the state with the error coming from the "backend"
+5. If it fails: remove the loading and update the state with the error coming from the “backend”
 
-Using `concatMap` so that if the `effect` is called multiple times before the call ends, it will resolve all the calls, this operator will wait until the past request is done to do the next one.
+Using `concatMap` so that if the `effect` gets called multiple times before the call ends, it will resolve all the calls. This RxJS operator will wait until the previous request completes to do the next one.
 
 The `tap` operator to handle the case of success and error.
 
@@ -605,11 +606,11 @@ p {
 
 Finally, make sure that the `car-list` component is added to the module.
 
-Open the `app/app.module.ts` file in the `declarations` array, and if it is not there, you can add the `CarListComponent` class manually.
+Open the `app/app.module.ts` file, look into the `declarations` array, and if it is not there, you can add the `CarListComponent` class manually.
 
 ### Adding the `FormModule`
 
-As you are going to have a small form with `[(ngModel)]` in the `app.component` you must add the `FormModule` to the `app.module`
+As you are going to have a small form with `[(ngModel)]` in the `app.component`, you must add the `FormModule` to the `app.module`
 
 Open the `app/app.module.ts` file and add the`FormsModule` to the `imports` array. The final code looks like this:
 
@@ -668,7 +669,7 @@ export class AppComponent {
 }
 ```
 
-`StoreService` handles all the business logic, which results in a tiny component. Let's see the code part by part:
+`StoreService` handles all the business logic, which results in a tiny component. Let’s see the code part by part:
 
 ##### Providers
 
@@ -676,9 +677,9 @@ export class AppComponent {
 
 ##### Properties
 
-`plate`: For the form model where the user will enter the car plate to add to the parking lot.
+`plate`:  For the form model, the user will enter the car plate to add to the parking lot.
 
-`vm$` It is the observable state that comes from our `StoreService` and is updated every time the state changes. We will subscribe to this in the HTML in the next step..
+`vm$` It is the observable state from our `StoreService` and is updated every time the state changes. We will subscribe to this in the HTML in the next step.
 
 ##### Methods
 
@@ -735,7 +736,7 @@ Add replace all the code with:
 </ng-container>
 ```
 
-`<ng-container *ngIf="vm$ | async as vm">`: The first thing is to obtain the ViewModel of the `vm$` property that we created in the component class, we use `async` pipe to subscribe, and we make a static variable`vm` that the rest of our HTML will be able to use.
+`<ng-container *ngIf="vm$ | async as vm">`: The first thing is to obtain the ViewModel of the `vm$` property that we created in the component class, we use `async` pipe to subscribe, and we make a static variable `vm` that the rest of our HTML will be able to use.
 
 ###### Error message
 
@@ -753,7 +754,7 @@ It is a small form with a textfield for the user to enter the plate and a button
 
 `<input>`: Enable/disable based on the state's `loading` property.
 
-`<button>`: It is enabled/disabled with the `loading` property of the state but also if the`plate` property of the component is empty (it prevents an empty `string` from being sent to the store service) /
+`<button>`: It is enabled/disabled with the `loading` property of the state but also if the `plate` property of the component is empty (it prevents an empty `string` from being sent to the store service)
 
 In the `onSubmit` method of the component, we call the effect with the plate number entered by the user, and this is where our ComponentStore service does everything.
 
@@ -858,15 +859,15 @@ Go to your browser: [https://localhost:4200](https://localhost:4200) and see you
 ### Summary
 
 1. You created a service that communicates with the API: `ParkingLotService`
-2. You created a service that handles all the logic and state of the `StoreService` component that extends`ComponentStore`
+2. You created a service that handles all the logic and state of the `StoreService` component that extends `ComponentStore`
 3. Your UI subscribes to the state of `StoreService`, and every time it changes, your UI is updated.
 
-Using this approach, you will end up with a single "source of truth" for your UI, easy to use without having to change code in many places to update or improve.
+Using this approach, you will end up with a single “source of truth” for your UI, easy to use without having to change code in many places to update or improve.
 
 ### Conclusion
 
 As you could see, it is better to start managing the state at the component level before jumping to a complete architecture.
 
-A state is simply an object representing what your interface looks like, and using `@ngrx/component-store` and its three basic concepts: `select`,`update` and `effect`, you can handle it in a simple, direct, and more painless way test.
+A state is simply an object representing how your interface looks like, and using `@ngrx/component-store` and its three basic concepts: `select`,`update` and `effect`, you can handle it in a simple, direct, and more painless way test.
 
 > I hope this tutorial has been beneficial for you, and if you have any questions, you can write to me on [Twitter by @fmontes](https://twitter.com/fmontes).
