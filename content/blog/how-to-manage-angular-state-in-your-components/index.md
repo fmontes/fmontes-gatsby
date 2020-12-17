@@ -3,6 +3,7 @@ title: How to manage Angular state in your components
 date: '2020-11-27T07:15:29.284Z'
 description: 'In this tutorial, I will explain how to manage your components state with @ngrx/component-store.'
 tags: angular, javascript
+canonical_url: https://indepth.dev/posts/1408/how-to-manage-angular-state-in-your-components
 ---
 
 _Updated Dec 3, 2020_
@@ -11,7 +12,7 @@ Thanks [@AlexOkrushko](https://twitter.com/AlexOkrushko) and [@Nartc1410](https:
 
 Managing the state of your Angular application has always been a challenge.
 
-In this tutorial, I will explain how to manage your components' state with `@ngrx/component-store`. You will be able to do it in a more organized way and minimizing bugs and UI inconsistencies.
+In this tutorial, I will explain how to manage your component's state with `@ngrx/component-store`. You will be able to do it in a more organized way and minimizing bugs and UI inconsistencies.
 
 ### Table of content
 
