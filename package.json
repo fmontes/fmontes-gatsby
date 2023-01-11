@@ -27,7 +27,7 @@
         "gatsby-remark-smartypants": "^2.3.13",
         "gatsby-source-filesystem": "^2.3.35",
         "gatsby-source-github-api": "^0.1.5",
-        "gatsby-transformer-remark": "^2.8.42",
+        "gatsby-transformer-remark": "^5.25.1",
         "gatsby-transformer-sharp": "^2.5.18",
         "gray-percentage": "^2.0.0",
         "instagram-web-api": "^2.2.2",
